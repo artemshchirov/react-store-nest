@@ -1,13 +1,9 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
-import './App.scss'
+import './App.scss';
 
 const App = () => {
-  return (
-    <div className="App">
-      Work
-    </div>
-  )
-}
+  return <div className="App">Work</div>;
+};
 
-export default App
+export default App;
