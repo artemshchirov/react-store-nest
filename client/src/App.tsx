@@ -1,9 +1,11 @@
-import { useState } from 'react';
-
+import { BrowserRouter as Router } from 'react-router-dom';
+import { AppRouter } from './components/AppRouter';
 import './App.scss';
 
-const App = () => {
-  return <div className="App">Work</div>;
+export const App = () => {
+  return (
+    <Router>
+      <AppRouter />
+    </Router>
+  );
 };
-
-export default App;

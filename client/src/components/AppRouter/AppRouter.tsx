@@ -1,10 +1,17 @@
 import React from 'react';
-import styles from './AppRouter.module.scss';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { authRoutes, publicRoutes } from '../../routes';
 
-interface AppRouterProps {}
-
-export const AppRouter = ({}: AppRouterProps) => (
-  <div className={styles.appRouter} data-testid="AppRouter">
-    AppRouter
-  </div>
-);
+export const AppRouter = () => {
+  // TODO: const isAuth = false;
+  return (
+    <Routes>
+      {authRoutes.map(({ path, Component }) => (
+        <Route key={path} path={path} element={<Component />} />
+      ))}
+      {publicRoutes.map(({ path, Component }) => (
+        <Route key={path} path={path} element={<Component />} />
+      ))}
+    </Routes>
+  );
+};
