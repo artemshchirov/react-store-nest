@@ -1,10 +1,12 @@
 import React, { FC } from 'react';
 import styles from './Basket.module.scss';
 
-interface Basket {}
+interface BasketProps {}
 
-export const Basket: FC<Basket> = () => (
-  <div className={styles.basket} data-testid="Basket">
-    Basket
-  </div>
-);
+export const Basket: FC<BasketProps> = () => {
+  return (
+    <div className={styles.basket} data-testid="Basket">
+      Basket
+    </div>
+  );
+};

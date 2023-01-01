@@ -1,10 +1,12 @@
 import React, { FC } from 'react';
 import styles from './Admin.module.scss';
 
-interface Admin {}
+interface AdminProps {}
 
-export const Admin: FC<Admin> = () => (
-  <div className={styles.admin} data-testid="Admin">
-    Admin
-  </div>
-);
+export const Admin: FC<AdminProps> = () => {
+  return (
+    <div className={styles.admin} data-testid="Admin">
+      Admin
+    </div>
+  );
+};

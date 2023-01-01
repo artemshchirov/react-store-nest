@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { authRoutes, publicRoutes } from '../../routes';
+import { UserContext } from '../../main';
 
 export const AppRouter = () => {
-  // TODO: const isAuth = false;
+  const { user } = useContext(UserContext);
+  console.log(user)
   return (
     <Routes>
-      {authRoutes.map(({ path, Component }) => (
-        <Route key={path} path={path} element={<Component />} />
-      ))}
+      {user?.isAuth
+        ? authRoutes.map(({ path, Component }) => (
+            <Route key={path} path={path} element={<Component />} />
+          ))
+        : null}
       {publicRoutes.map(({ path, Component }) => (
         <Route key={path} path={path} element={<Component />} />
       ))}

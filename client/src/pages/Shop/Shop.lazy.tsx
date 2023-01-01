@@ -1,13 +1,10 @@
-import React, { lazy, Suspense } from 'react';
+import React, { FC } from 'react';
+import styles from './Shop.module.scss';
 
-const LazyAdmin = lazy(() =>
-  import('./Shop').then((module) => ({ default: module.Shop })),
-);
+interface ShopProps {}
 
-export const Shop = (
-  props: JSX.IntrinsicAttributes & { children?: React.ReactNode },
-) => (
-  <Suspense fallback={null}>
-    <LazyAdmin {...props} />
-  </Suspense>
+export const Shop: FC<ShopProps> = () => (
+  <div className={styles.shop} data-testid="Shop">
+    Shop
+  </div>
 );
