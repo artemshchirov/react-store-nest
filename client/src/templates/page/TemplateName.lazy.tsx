@@ -6,8 +6,10 @@ const LazyAdmin = lazy(() =>
 
 export const TemplateName = (
   props: JSX.IntrinsicAttributes & { children?: React.ReactNode },
-) => (
-  <Suspense fallback={null}>
-    <LazyAdmin {...props} />
-  </Suspense>
-);
+) => {
+  return (
+    <Suspense fallback={null}>
+      <LazyAdmin {...props} />
+    </Suspense>
+  );
+};
