@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styles from './Admin.module.scss';
 
-interface AdminProps {}
+export interface AdminProps {}
 
 export const Admin: FC<AdminProps> = () => {
   return (

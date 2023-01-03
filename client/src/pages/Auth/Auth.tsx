@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styles from './Auth.module.scss';
 
-interface AuthProps {}
+export interface AuthProps {}
 
 export const Auth: FC<AuthProps> = () => {
   return (

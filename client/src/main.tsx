@@ -1,23 +1,17 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { App } from './App';
-import './index.scss';
+import { App } from './components';
 import UserStore from './store/UserStore';
-
-interface IUserContext {
-  user?: UserStore;
-}
-
-export const UserContext = createContext<IUserContext>({});
+import DeviceStore from './store/DeviceStore';
+import { UserContext } from './contexts/UserContext';
+import { DeviceContext } from './contexts/DeviceContext';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <UserContext.Provider
-      value={{
-        user: new UserStore(),
-      }}
-    >
-      <App />
+    <UserContext.Provider value={{ user: new UserStore() }}>
+      <DeviceContext.Provider value={{ device: new DeviceStore() }}>
+        <App />
+      </DeviceContext.Provider>
     </UserContext.Provider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

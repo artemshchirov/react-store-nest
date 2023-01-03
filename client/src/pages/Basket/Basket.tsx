@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styles from './Basket.module.scss';
 
-interface BasketProps {}
+export interface BasketProps {}
 
 export const Basket: FC<BasketProps> = () => {
   return (

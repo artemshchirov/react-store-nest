@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styles from './DevicePage.module.scss';
 
-interface DevicePageProps {}
+export interface DevicePageProps {}
 
 export const DevicePage: FC<DevicePageProps> = () => {
   return (
