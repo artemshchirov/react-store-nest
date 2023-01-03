@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
-import styles from './Navbar.module.scss';
-import { UserContext } from '../../../contexts/UserContext';
+import React, { useContext } from "react";
+import styles from "./Navbar.module.scss";
+import { UserContext } from "../../../contexts/UserContext";
 
 export interface NavbarProps {}
 

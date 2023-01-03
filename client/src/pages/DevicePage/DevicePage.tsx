@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import styles from './DevicePage.module.scss';
+import React, { FC } from "react";
+import styles from "./DevicePage.module.scss";
 
 export interface DevicePageProps {}
 

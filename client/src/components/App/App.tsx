@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { Header, AppRouter } from '..';
-import './App.scss';
+import React, { FC } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Header, AppRouter } from "..";
+import "./App.scss";
 
 export const App: FC = () => {
   return (

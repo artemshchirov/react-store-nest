@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import styles from './Admin.module.scss';
+import React, { FC } from "react";
+import styles from "./Admin.module.scss";
 
 export interface AdminProps {}
 

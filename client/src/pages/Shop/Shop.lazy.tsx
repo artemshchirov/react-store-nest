@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import styles from './Shop.module.scss';
+import React, { FC } from "react";
+import styles from "./Shop.module.scss";
 
 export interface ShopProps {}
 

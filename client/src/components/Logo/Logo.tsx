@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './Logo.module.scss';
+import React from "react";
+import styles from "./Logo.module.scss";
 
 export interface LogoProps {}
 

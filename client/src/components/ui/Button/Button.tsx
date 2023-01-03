@@ -1,8 +1,8 @@
-import React, { FC, DOMAttributes } from 'react';
-import classNames from 'classnames';
-import styles from './Button.module.scss';
+import React, { FC, DOMAttributes } from "react";
+import classNames from "classnames";
+import styles from "./Button.module.scss";
 
-export type ButtonType = 'button' | 'submit' | 'reset';
+export type ButtonType = "button" | "submit" | "reset";
 
 export interface IButtonProps extends DOMAttributes<HTMLButtonElement> {
   className?: string;

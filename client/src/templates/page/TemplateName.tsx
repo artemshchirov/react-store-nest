@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import styles from './TemplateName.module.scss';
+import React, { FC } from "react";
+import styles from "./TemplateName.module.scss";
 
 export interface ITemplateNameProps {}
 

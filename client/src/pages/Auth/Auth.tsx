@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import styles from './Auth.module.scss';
+import React, { FC } from "react";
+import styles from "./Auth.module.scss";
 
 export interface AuthProps {}
 

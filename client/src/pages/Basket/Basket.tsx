@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import styles from './Basket.module.scss';
+import React, { FC } from "react";
+import styles from "./Basket.module.scss";
 
 export interface BasketProps {}
 

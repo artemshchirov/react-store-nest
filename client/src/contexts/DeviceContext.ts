@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext } from "react";
 import DeviceStore from "../store/DeviceStore";
 
 export interface IDeviceContext {

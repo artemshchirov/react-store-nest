@@ -1,4 +1,4 @@
-@import './variables';
+@import "./variables";
 
 // Breakpoints
 @mixin smMinBreakPoint {
@@ -20,13 +20,13 @@
 }
 
 @mixin customMinBreakPoint($size) {
-  @media (min-width: ($size + 'px')) {
+  @media (min-width: ($size + "px")) {
     @content;
   }
 }
 
 @mixin customMaxBreakPoint($size) {
-  @media (max-width: ($size + 'px')) {
+  @media (max-width: ($size + "px")) {
     @content;
   }
 }

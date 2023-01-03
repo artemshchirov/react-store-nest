@@ -1,6 +1,6 @@
-import React from 'react';
-import styles from './Header.module.scss';
-import { Navbar, Button } from '../ui';
+import React from "react";
+import styles from "./Header.module.scss";
+import { Navbar, Button } from "../ui";
 
 export interface HeaderProps {}
 
