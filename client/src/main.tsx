@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import { App } from "./components";
 import UserStore from "./store/UserStore";
 import DeviceStore from "./store/DeviceStore";
-import { UserContext } from "./contexts/UserContext";
-import { DeviceContext } from "./contexts/DeviceContext";
+import { UserContext } from "./context/UserContext";
+import { DeviceContext } from "./context/DeviceContext";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>

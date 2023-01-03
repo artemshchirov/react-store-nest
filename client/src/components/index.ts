@@ -1,6 +1,9 @@
 import { Navbar, Button } from "./ui";
 import App from "./App";
-import Header from "./Header";
 import AppRouter from "./AppRouter";
+import CustomLink from "./CustomLink";
+import Footer from "./Footer";
+import Logo from "./Logo";
+import Header from "./Header";
 
-export { Navbar, Button, App, Header, AppRouter };
+export { Navbar, Button, App, Header, AppRouter, CustomLink, Footer, Logo };

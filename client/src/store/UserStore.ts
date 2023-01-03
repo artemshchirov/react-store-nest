@@ -14,12 +14,15 @@ export default class UserStore {
     this._isAuth = isAuth;
   }
 
-  //TODO: change any
   setUser(user: UserStore) {
     this._user = user;
   }
 
   get isAuth() {
+    return this._isAuth;
+  }
+
+  get user() {
     return this._user;
   }
 }
