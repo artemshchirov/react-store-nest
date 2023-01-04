@@ -1,0 +1,99 @@
+@import "../../../styles";
+
+.formField {
+  $this: &;
+  position: relative;
+  margin-bottom: 30px;
+  height: 56px;
+  width: 100%;
+  border-radius: 4px;
+  word-wrap: break-word;
+
+  &__label {
+    @include roboto-14-regular;
+    position: absolute;
+    top: 20px;
+    left: 12px;
+    z-index: 1;
+    color: rgba(0, 0, 0, 0.54);
+    pointer-events: none;
+    transition: all 0.2s;
+
+    &_required {
+      color: $color-red;
+    }
+
+    &#{$this}__input_error {
+      background-color: $color-light-red;
+    }
+  }
+
+  &__error {
+    @include roboto-12-regular;
+    display: block;
+    padding-top: 5px;
+    color: $color-red;
+    transition: all 0.3s;
+  }
+
+  // &-Visibility {
+  //   display: inline-block;
+  //   position: absolute;
+  //   top: 50%;
+  //   transform: translateY(-50%);
+  //   right: 12px;
+
+  //   svg {
+  //     fill: rgba(0, 0, 0, 0.54);
+  //   }
+  // }
+
+  &__active {
+    width: 100%;
+    background-color: white;
+
+    #{$this}__label {
+      @include roboto-12-regular;
+      top: -7px;
+      padding: 0 5px;
+      color: $color-text;
+      background-color: white;
+    }
+
+    &#{$this}__input_active {
+      width: 100%;
+      border: 1px solid rgba(0, 0, 0, 0.54);
+      color: $color-text;
+      background-color: white;
+
+      input:hover,
+      input {
+        background-color: white;
+      }
+    }
+
+    input:-webkit-autofill.Input__active,
+    input:-webkit-autofill.Input__active:hover,
+    input:-webkit-autofill.Input__active:focus,
+    input:-webkit-autofill.Input__active:active {
+      -webkit-box-shadow: 0 0 0 30px white inset !important;
+    }
+
+    & textarea,
+    & textarea:hover {
+      background-color: white;
+    }
+
+    &#{$this}__input_active.#{$this}__input_error {
+      border: 1px solid $color-red;
+      background-color: white;
+    }
+
+    &:hover {
+      #{$this}__input_active,
+      #{$this}__input_error {
+        background-color: white;
+      }
+    }
+  }
+}

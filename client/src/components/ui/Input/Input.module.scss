@@ -1,0 +1,26 @@
+@import "../../../styles/";
+
+.input {
+  $this: &;
+  display: flex;
+  align-items: center;
+  padding: 18px 40px 18px 12px;
+  width: 100%;
+  background-color: $color-bg-input;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  outline: transparent;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background-color: $color-bg-input-hover;
+  }
+
+  &#{$this}_error {
+    background-color: $color-light-red;
+
+    &:hover {
+      background-color: $color-light-red-hover;
+    }
+  }
+}
