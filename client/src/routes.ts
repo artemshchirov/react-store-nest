@@ -11,6 +11,7 @@ import { Basket } from "./pages/Basket/Basket.lazy";
 import { Auth } from "./pages/Auth/Auth.lazy";
 import { Shop } from "./pages/Shop/Shop.lazy";
 import { DevicePage } from "./pages/DevicePage/DevicePage.lazy";
+import { Signup } from "./pages/Signup/Signup.lazy";
 
 export const authRoutes = [
   {
@@ -34,7 +35,7 @@ export const publicRoutes = [
   },
   {
     path: REGISTRATION_ROUTE,
-    Component: Auth,
+    Component: Signup,
   },
   {
     path: DEVICE_ROUTE + "/:id",
