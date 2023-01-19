@@ -4,8 +4,8 @@ import React, {
   forwardRef,
   HTMLAttributes,
 } from "react";
-import styles from "./Input.module.scss";
 import classNames from "classnames";
+import styles from "./Input.module.scss";
 
 export interface IInputProps
   extends DetailedHTMLProps<
@@ -25,17 +25,15 @@ export const Input = forwardRef(
     ref: ForwardedRef<HTMLInputElement>
   ): JSX.Element => {
     return (
-      <>
-        <input
-          className={classNames(styles.input, className, {
-            input_error: error,
-          })}
-          name={name}
-          type={type}
-          ref={ref}
-          {...rest}
-        />
-      </>
+      <input
+        className={classNames(className, styles.input, {
+          [styles.input_error]: error,
+        })}
+        name={name}
+        type={type}
+        ref={ref}
+        {...rest}
+      />
     );
   }
 );

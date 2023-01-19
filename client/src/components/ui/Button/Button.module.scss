@@ -30,3 +30,27 @@
     }
   }
 }
+.page--about-us {
+  $about: &; // store about us selector
+
+  a {
+      text-decoration:none;
+  }
+
+  .fa-stack {
+      .fa {
+          color:pink;
+      }
+
+      #{$about} a & {
+          &:hover {
+              .fa-circle-thin {
+                  color:red;
+              }
+              .fa-twitter {
+                  color:blue;
+              }
+          }
+      }
+  }
+}

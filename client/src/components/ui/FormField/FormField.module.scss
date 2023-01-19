@@ -1,4 +1,5 @@
 @import "../../../styles";
+@import "../Input/Input.module.scss";
 
 .formField {
   $this: &;
@@ -23,12 +24,12 @@
       color: $color-red;
     }
 
-    &#{$this}__input_error {
+    .input_error {
       background-color: $color-light-red;
     }
   }
 
-  &__error {
+  &_error {
     @include roboto-12-regular;
     display: block;
     padding-top: 5px;
@@ -36,19 +37,7 @@
     transition: all 0.3s;
   }
 
-  // &-Visibility {
-  //   display: inline-block;
-  //   position: absolute;
-  //   top: 50%;
-  //   transform: translateY(-50%);
-  //   right: 12px;
-
-  //   svg {
-  //     fill: rgba(0, 0, 0, 0.54);
-  //   }
-  // }
-
-  &__active {
+  &_active {
     width: 100%;
     background-color: white;
 
@@ -60,7 +49,7 @@
       background-color: white;
     }
 
-    &#{$this}__input_active {
+    .input_active {
       width: 100%;
       border: 1px solid rgba(0, 0, 0, 0.54);
       color: $color-text;
@@ -72,26 +61,14 @@
       }
     }
 
-    input:-webkit-autofill.Input__active,
-    input:-webkit-autofill.Input__active:hover,
-    input:-webkit-autofill.Input__active:focus,
-    input:-webkit-autofill.Input__active:active {
-      -webkit-box-shadow: 0 0 0 30px white inset !important;
-    }
-
-    & textarea,
-    & textarea:hover {
-      background-color: white;
-    }
-
-    &#{$this}__input_active.#{$this}__input_error {
+    .input_active.input_error {
       border: 1px solid $color-red;
       background-color: white;
     }
 
     &:hover {
-      #{$this}__input_active,
-      #{$this}__input_error {
+      .input_active,
+      .input.input_error {
         background-color: white;
       }
     }
