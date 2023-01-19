@@ -23,6 +23,10 @@ const schema = yup.object().shape({
     .string()
     .matches(/^([^0-9]*)$/, "The last name must not contain numbers")
     .required("Last name is required"),
+  email: yup
+    .string()
+    .email("Invalid email. Check if your email is entered correctly")
+    .required("Email is required"),
 });
 
 export const Signup: FC = () => {
@@ -53,7 +57,6 @@ export const Signup: FC = () => {
   const handleFocus = (evt: React.FocusEvent<HTMLInputElement>) => {
     setIsFocused({ ...isFocused, [evt.target.name]: true });
   };
-  console.log(isFocused);
 
   const handleBlur = (evt: React.FocusEvent<HTMLInputElement>) => {
     if (watchAllFields[evt.target.name as keyof ISignupProps] !== "") {
@@ -87,6 +90,17 @@ export const Signup: FC = () => {
               register={register}
               error={errors.lastName && errors.lastName?.message}
               isFocused={isFocused.lastName}
+              isRequired
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+            />
+            <FormField
+              label="Email"
+              name="email"
+              type="text"
+              register={register}
+              error={errors.email && errors.email?.message}
+              isFocused={isFocused.email}
               isRequired
               onFocus={handleFocus}
               onBlur={handleBlur}

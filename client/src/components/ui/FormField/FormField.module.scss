@@ -61,6 +61,13 @@
       }
     }
 
+    input:-webkit-autofill.input_active,
+    input:-webkit-autofill.input_active:hover,
+    input:-webkit-autofill.input_active:focus,
+    input:-webkit-autofill.input_active:active {
+      -webkit-box-shadow: 0 0 0 30px white inset !important;
+    }
+
     .input_active.input_error {
       border: 1px solid $color-red;
       background-color: white;
