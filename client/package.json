@@ -14,7 +14,9 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.10",
+    "@types/axios": "^0.14.0",
     "@types/uuid": "^9.0.0",
+    "axios": "^1.2.3",
     "mobx": "^6.7.0",
     "mobx-react": "^7.6.0",
     "normalize.css": "^8.0.1",

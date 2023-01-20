@@ -3,6 +3,7 @@ import { Path } from "react-hook-form";
 import styles from "./FormField.module.scss";
 import classNames from "classnames";
 import { Input, Icon } from "../../ui";
+import InputPhone from "../Input/InputPhone";
 
 export type FormFieldType = "text" | "password" | "tel" | "textarea";
 
@@ -56,11 +57,11 @@ export const FormField = <T,>({
           [styles.input_error]: error,
         })}
         {...(register ? register(name) : register)}
+        error={error}
         name={name}
         type={handleType(type)}
-        error={error}
-        onBlur={onBlur}
         onFocus={onFocus}
+        onBlur={onBlur}
       />
     );
   };
@@ -97,6 +98,23 @@ export const FormField = <T,>({
               <Icon type="Visibility" />
             )}
           </div>
+          {error && <span className={styles.formField_error}>{error}</span>}
+        </>
+      )}
+      {type === "tel" && (
+        <>
+          <InputPhone
+            className={classNames({
+              [styles.input_active]: isFocused,
+              [styles.input_error]: error,
+            })}
+            {...(register ? register(name) : register)}
+            error={error}
+            name={name}
+            type={type}
+            onFocus={onFocus}
+            onBlur={onBlur}
+          />
           {error && <span className={styles.formField_error}>{error}</span>}
         </>
       )}

@@ -4,6 +4,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styles from "./Signup.module.scss";
 import { Button, FormField } from "../../components";
+import { fetchUserSignup } from "../../api/account";
+import { normalizePhoneNumber } from "../../utils/normalizePhoneNumber";
 
 export interface ISignupProps {
   firstName: string;
@@ -23,6 +25,7 @@ const schema = yup.object().shape({
     .string()
     .matches(/^([^0-9]*)$/, "The last name must not contain numbers")
     .required("Last name is required"),
+  phoneNumber: yup.string().required("Phone number is required"),
   email: yup
     .string()
     .email("Invalid email. Check if your email is entered correctly")
@@ -56,10 +59,13 @@ export const Signup: FC = () => {
 
   const watchAllFields = watch();
 
-  const onSubmit = (fieldsData: ISignupProps) => {
-    console.log("data:", fieldsData);
-    if (fieldsData.password === fieldsData.passwordConfirm) {
+  const onSubmit = (formData: ISignupProps) => {
+    console.log("formData:", formData);
+    const phoneNumberNormalize = normalizePhoneNumber(formData.phoneNumber);
+    if (formData.password === formData.passwordConfirm) {
       setIsPasswordMatch(true);
+      const options = { ...formData, phoneNumber: phoneNumberNormalize };
+      fetchUserSignup(options);
     } else {
       setIsPasswordMatch(false);
     }
@@ -111,6 +117,17 @@ export const Signup: FC = () => {
               onBlur={handleBlur}
             />
             <FormField
+              label="Phone number"
+              name="phoneNumber"
+              type="tel"
+              register={register}
+              error={errors.phoneNumber && errors.phoneNumber?.message}
+              isFocused={isFocused.phoneNumber}
+              isRequired
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+            />
+            <FormField
               label="Email"
               name="email"
               type="text"
@@ -140,8 +157,8 @@ export const Signup: FC = () => {
               error={selectErrPasswordMessage(errors.passwordConfirm?.message)}
               isFocused={isFocused.passwordConfirm}
               isRequired
-              onBlur={handleBlur}
               onFocus={handleFocus}
+              onBlur={handleBlur}
             />
           </div>
           <Button typeButton="submit" className={styles.form__button}>
