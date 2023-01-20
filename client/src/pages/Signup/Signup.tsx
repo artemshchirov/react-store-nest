@@ -27,6 +27,10 @@ const schema = yup.object().shape({
     .string()
     .email("Invalid email. Check if your email is entered correctly")
     .required("Email is required"),
+  password: yup
+    .string()
+    .min(8, "Password must be at least 8 characters")
+    .required("Password is required"),
 });
 
 export const Signup: FC = () => {
@@ -36,8 +40,10 @@ export const Signup: FC = () => {
     phoneNumber: false,
     email: false,
     password: false,
-    rePassword: false,
+    passwordConfirm: false,
   });
+
+  const [isPasswordMatch, setIsPasswordMatch] = useState(true);
 
   const {
     register,
@@ -50,8 +56,18 @@ export const Signup: FC = () => {
 
   const watchAllFields = watch();
 
-  const onSubmit = (data: ISignupProps) => {
-    console.log("data:", data);
+  const onSubmit = (fieldsData: ISignupProps) => {
+    console.log("data:", fieldsData);
+    if (fieldsData.password === fieldsData.passwordConfirm) {
+      setIsPasswordMatch(true);
+    } else {
+      setIsPasswordMatch(false);
+    }
+  };
+
+  const selectErrPasswordMessage = (message?: string) => {
+    if (message) return message;
+    if (!isPasswordMatch) return "Password mismatch";
   };
 
   const handleFocus = (evt: React.FocusEvent<HTMLInputElement>) => {
@@ -104,6 +120,28 @@ export const Signup: FC = () => {
               isRequired
               onFocus={handleFocus}
               onBlur={handleBlur}
+            />
+            <FormField
+              label="Password"
+              name="password"
+              type="password"
+              register={register}
+              error={selectErrPasswordMessage(errors.password?.message)}
+              isFocused={isFocused.password}
+              isRequired
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+            />
+            <FormField
+              label="Confirm password"
+              name="passwordConfirm"
+              type="password"
+              register={register}
+              error={selectErrPasswordMessage(errors.passwordConfirm?.message)}
+              isFocused={isFocused.passwordConfirm}
+              isRequired
+              onBlur={handleBlur}
+              onFocus={handleFocus}
             />
           </div>
           <Button typeButton="submit" className={styles.form__button}>
