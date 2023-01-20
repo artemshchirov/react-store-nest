@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Path } from "react-hook-form";
 import styles from "./FormField.module.scss";
 import classNames from "classnames";
-import Input from "../Input";
+import { Input, Icon } from "../../ui";
+import InputPhone from "../Input/InputPhone";
 
 export type FormFieldType = "text" | "password" | "tel" | "textarea";
 
@@ -38,13 +39,13 @@ export const FormField = <T,>({
     setIsShowPassword(prevState => !prevState);
   };
 
-  const handleType = (type: string) => {
-    if (type === "text") {
+  const handleType = (inputType: string) => {
+    if (inputType === "text") {
       return "text";
     }
-    if (type === "password") {
-      type = isShowPassword ? "text" : "password";
-      return type;
+    if (inputType === "password") {
+      inputType = isShowPassword ? "text" : "password";
+      return inputType;
     }
   };
 
@@ -56,11 +57,11 @@ export const FormField = <T,>({
           [styles.input_error]: error,
         })}
         {...(register ? register(name) : register)}
+        error={error}
         name={name}
         type={handleType(type)}
-        error={error}
-        onBlur={onBlur}
         onFocus={onFocus}
+        onBlur={onBlur}
       />
     );
   };
@@ -81,6 +82,39 @@ export const FormField = <T,>({
       {type === "text" && (
         <>
           {renderInput()}
+          {error && <span className={styles.formField_error}>{error}</span>}
+        </>
+      )}
+      {type === "password" && (
+        <>
+          {renderInput()}
+          <div
+            className={styles.formField__icon_visibility}
+            onClick={handlePasswordShow}
+          >
+            {isShowPassword ? (
+              <Icon type="VisibilityOff" size="small" />
+            ) : (
+              <Icon type="Visibility" />
+            )}
+          </div>
+          {error && <span className={styles.formField_error}>{error}</span>}
+        </>
+      )}
+      {type === "tel" && (
+        <>
+          <InputPhone
+            className={classNames({
+              [styles.input_active]: isFocused,
+              [styles.input_error]: error,
+            })}
+            {...(register ? register(name) : register)}
+            error={error}
+            name={name}
+            type={type}
+            onFocus={onFocus}
+            onBlur={onBlur}
+          />
           {error && <span className={styles.formField_error}>{error}</span>}
         </>
       )}

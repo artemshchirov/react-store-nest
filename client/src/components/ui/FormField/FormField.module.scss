@@ -29,6 +29,20 @@
     }
   }
 
+  &__icon {
+    &_visibility {
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 12px;
+
+      svg {
+        fill: rgba(0, 0, 0, 0.54);
+      }
+    }
+  }
+
   &_error {
     @include roboto-12-regular;
     display: block;
@@ -59,6 +73,13 @@
       input {
         background-color: white;
       }
+    }
+
+    input:-webkit-autofill.input_active,
+    input:-webkit-autofill.input_active:hover,
+    input:-webkit-autofill.input_active:focus,
+    input:-webkit-autofill.input_active:active {
+      -webkit-box-shadow: 0 0 0 30px white inset !important;
     }
 
     .input_active.input_error {
