@@ -8,8 +8,8 @@ async function start() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('Online store backend server NestJS')
-    .setDescription('REST API docs')
+    .setTitle('Online store NestJS backend')
+    .setDescription('REST API Documentation')
     .setVersion('1.0.0')
     .addTag(`localhost:${PORT}/api/docs#`)
     .build();

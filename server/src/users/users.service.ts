@@ -15,11 +15,12 @@ export class UsersService {
 
   async createUser(dto: CreateUserDto) {
     const user = await this.userRepository.create(dto);
-    const role = await this.roleService.getRoleByValue('ADMIN');
+    // TODO: create roles: "ADMIN" and "USER" with "value" and "description" fields
+    const role = await this.roleService.getRoleByValue('USER');
 
     if (role) await user.$set('roles', [role.id]);
     else throw new HttpException(
-      'role: "ADMIN" doesnt exist',
+      'role: "ADMIN" doesn`t exist',
       HttpStatus.BAD_REQUEST,
     );
 
