@@ -11,13 +11,10 @@ import { PostsModule } from './posts/posts.module';
 import { Post } from './posts/posts.model';
 import { FilesModule } from './files/files.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
-import { RolesModule } from './roles/roles.module';
-import { AuthModule } from './auth/auth.module';
-import { AuthController } from './auth/auth.controller';
 import * as path from 'path';
 
 @Module({
-  controllers: [AuthController],
+  controllers: [],
   providers: [],
   imports: [
     ConfigModule.forRoot({
