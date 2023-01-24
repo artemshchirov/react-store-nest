@@ -4,12 +4,17 @@ import {
   Column,
   DataType,
   HasMany,
+  HasOne,
   Model,
   Table,
 } from 'sequelize-typescript';
 import { Role } from 'src/roles/roles.model';
 import { UserRoles } from 'src/roles/user-roles.model';
 import { Post } from '../posts/posts.model';
+import { Basket } from '../basket/basket.model';
+import { Rating } from '../rating/rating.model';
+
+
 
 interface UserCreationAttrs {
   email: string;
@@ -18,8 +23,9 @@ interface UserCreationAttrs {
 
 @Table({ tableName: 'users' })
 export class User extends Model<User, UserCreationAttrs> {
-  
-  @ApiProperty({ example: '1', description: 'Unique id' })
+
+
+  @ApiProperty({ example: '1', description: 'Unique ID' })
   @Column({
     type: DataType.INTEGER,
     unique: true,
@@ -28,13 +34,31 @@ export class User extends Model<User, UserCreationAttrs> {
   })
   id: number;
 
+
   @ApiProperty({ example: 'user@gmail.com', description: 'Email address' })
   @Column({ type: DataType.STRING, unique: true, allowNull: false })
   email: string;
 
+
   @ApiProperty({ example: '12345678', description: 'User password' })
   @Column({ type: DataType.STRING, allowNull: false })
   password: string;
+
+
+  @BelongsToMany(() => Role, () => UserRoles)
+  roles: Role[];
+
+
+  @HasMany(() => Post)
+  posts: Post[];
+
+
+  @HasOne(() => Basket)
+  basket: Basket;
+
+
+  @HasMany(() => Rating)
+  rates: Rating[]
 
 
   // TODO: Extract to independence @Table and add to user only if banned
@@ -43,6 +67,7 @@ export class User extends Model<User, UserCreationAttrs> {
   @Column({ type: DataType.BOOLEAN, defaultValue: false })
   banned: boolean;
 
+
   @ApiProperty({
     example: 'Banned for some reason',
     description: 'Reason why user banned',
@@ -50,10 +75,4 @@ export class User extends Model<User, UserCreationAttrs> {
   @Column({ type: DataType.STRING, allowNull: true })
   banReason: string;
   // ********************************************************************
-
-  @BelongsToMany(() => Role, () => UserRoles)
-  roles: Role[];
-
-  @HasMany(() => Post)
-  posts: Post[];
 }
