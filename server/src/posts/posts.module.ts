@@ -6,6 +6,8 @@ import { Post } from './posts.model';
 import { PostsService } from './posts.service';
 import { FilesModule } from '../files/files.module';
 
+
+
 @Module({
   providers: [PostsService],
   controllers: [PostsController],

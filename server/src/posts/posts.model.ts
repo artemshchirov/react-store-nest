@@ -9,6 +9,8 @@ import {
 } from 'sequelize-typescript';
 import { User } from '../users/users.model';
 
+
+
 interface PostCreationAttrs {
   title: string;
   content: string;
@@ -18,7 +20,9 @@ interface PostCreationAttrs {
 
 @Table({ tableName: 'posts' })
 export class Post extends Model<Post, PostCreationAttrs> {
-  @ApiProperty({ example: '1', description: 'Unique post id' })
+
+
+  @ApiProperty({ example: '1', description: 'Unique post ID' })
   @Column({
     type: DataType.INTEGER,
     unique: true,
@@ -27,16 +31,20 @@ export class Post extends Model<Post, PostCreationAttrs> {
   })
   id: number;
 
+
   @ApiProperty({ example: 'Learn NestJS', description: 'Post title' })
   @Column({ type: DataType.STRING, unique: true, allowNull: false })
   title: string;
+
 
   @ApiProperty({ example: 'Hello World!', description: 'Post content' })
   @Column({ type: DataType.STRING, allowNull: false })
   content: string;
 
+
   @Column({ type: DataType.STRING })
   image: string;
+
 
   @ForeignKey(() => User)
   @Column({ type: DataType.INTEGER })

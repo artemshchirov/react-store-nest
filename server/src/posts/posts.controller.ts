@@ -18,7 +18,7 @@ export class PostsController {
   @ApiOperation({ summary: 'Create post' })
   @Post()
   @UseInterceptors(FileInterceptor('image'))
-  // TODO: change name "create" -> "createPost"
+  // NOTE: change name "create" -> "createPost"?
   create(@Body() dto: CreatePostDto, @UploadedFile() image: Express.Multer.File) {
     return this.postsService.createPost(dto, image);
   }
