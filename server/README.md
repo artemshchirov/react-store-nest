@@ -10,8 +10,14 @@ Online store backend written with NestJS and TypeScript + PostgreSQL
 
 ## TODO
 
+* [ ] Secure CORS config
+* [ ] Logger
+* [ ] refactor main.ts -> config.ts
 * [ ] Tests
 * [ ] Docker
+* [ ] Nginx
+* [ ] HTTPS certificate
+* [ ] pm2 /crash-htest
 * [ ] Deploy
 
 ## Running the app

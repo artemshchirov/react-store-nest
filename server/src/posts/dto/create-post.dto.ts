@@ -10,7 +10,7 @@ export class CreatePostDto {
   @IsString({ message: 'must be string' })
   readonly content: string;
 
-  // TODO: receive userId from token, not dto
+  // TODO receive userId from token, not dto
   @ApiProperty({ example: '1', description: 'Unique user id' })
   @IsNumber({}, { message: 'must be number' })
   readonly userId: number;

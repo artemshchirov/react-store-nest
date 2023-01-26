@@ -7,7 +7,7 @@ import * as fs from 'fs';
 export class FilesService {
 
 
-  // TODO: async work with filesystem
+  // TODO async work with filesystem
   async createFile(file): Promise<string> {
     try {
       const fileName = v4() + '.jpg';
@@ -17,7 +17,7 @@ export class FilesService {
 
       fs.writeFileSync(path.join(filePath, fileName), file.buffer);
       return fileName;
-      
+
     } catch (err) {
       throw new HttpException(
         'Error while saving file to disk',

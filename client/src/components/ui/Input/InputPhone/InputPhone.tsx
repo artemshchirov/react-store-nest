@@ -25,7 +25,7 @@ export const InputPhone = forwardRef(
     const PATTERN = /\D/g;
 
     const getInputNumbersValue = (value: string) => {
-      // NOTE: return only numbers
+      // NOTE return only numbers
       return value.replace(PATTERN, "");
     };
 
@@ -45,11 +45,11 @@ export const InputPhone = forwardRef(
         return;
       }
 
-      // TODO: israeli and ukrainian phone number masks
+      // TODO israeli and ukrainian phone number masks
       formattedInputValue = inputNumbersValue.substring(0, 16);
 
       if (["7", "8", "9"].includes(inputNumbersValue[0])) {
-        // NOTE: russian phone number
+        // NOTE russian phone number
         if (inputNumbersValue[0] === "9") {
           inputNumbersValue = "7" + inputNumbersValue;
         }
@@ -70,7 +70,7 @@ export const InputPhone = forwardRef(
           formattedInputValue += "-" + inputNumbersValue.substring(9, 11);
         }
       } else {
-        // NOTE: not Russian phone number
+        // NOTE not Russian phone number
         formattedInputValue = "+" + inputNumbersValue.substring(0, 16);
       }
 
@@ -78,7 +78,7 @@ export const InputPhone = forwardRef(
     };
 
     const handlePhoneKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
-      // NOTE: remove first symbol
+      // NOTE remove first symbol
       const input = evt.target as HTMLInputElement;
       if (
         evt.key === "Backspace" &&

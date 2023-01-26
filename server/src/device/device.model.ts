@@ -21,7 +21,7 @@ interface DeviceCreationAttrs {
   brandId: number
 }
 
-@Table({ tableName: 'rating' })
+@Table({ tableName: 'device' })
 export class Device extends Model<Device, DeviceCreationAttrs> {
 
 

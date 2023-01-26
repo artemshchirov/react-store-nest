@@ -13,7 +13,7 @@ export interface IFormFieldProps<T> {
   label?: string;
   name?: Path<T>;
   // register?: (Ref, RegisterOptions?) => { onChange; onBlur; name; ref };
-  register?: any; // TODO: refactor any
+  register?: any; // TODO refactor any
   type: FormFieldType;
   isFocused?: boolean;
   isRequired?: boolean;

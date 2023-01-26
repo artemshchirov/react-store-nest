@@ -11,19 +11,20 @@ import { BanUserDto } from './dto/ban-user.dto';
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectModel(User) private userRepository: typeof User,
+    @InjectModel(User)
+    private userRepository: typeof User,
     private roleService: RolesService,
   ) { }
 
 
   async createUser(dto: CreateUserDto) {
     const user = await this.userRepository.create(dto);
-    // TODO: create roles: "ADMIN" and "USER" with "value" and "description" fields
+    // TODO create roles: "ADMIN" and "USER" with "value" and "description" fields
     const role = await this.roleService.getRoleByValue('USER');
 
     if (role) await user.$set('roles', [role.id]);
     else throw new HttpException(
-      'role: "ADMIN" doesn`t exist',
+      'role: "USER" doesn`t exist',
       HttpStatus.BAD_REQUEST,
     );
 

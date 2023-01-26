@@ -61,7 +61,7 @@ export class User extends Model<User, UserCreationAttrs> {
   rates: Rating[]
 
 
-  // TODO: Extract to independence @Table and add to user only if banned
+  // TODO Extract to independence @Table and add to user only if banned
   // ********************************************************************
   @ApiProperty({ example: 'true', description: 'User ban' })
   @Column({ type: DataType.BOOLEAN, defaultValue: false })

@@ -28,13 +28,14 @@ import { Brand } from './brand/brand.model';
 import { TypeBrand } from './type/type-brand.model';
 import * as path from 'path';
 
-import { OriginValidationService } from './cors/origin.validation.service';
-import { CorsMiddleware } from './cors/cors.middleware';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+
+
 
 @Module({
-  controllers: [],
-  // TODO refactor cors
-  providers: [OriginValidationService, CorsMiddleware],
+  controllers: [AppController],
+  providers: [AppService],
   imports: [
     ConfigModule.forRoot({
       envFilePath: `.env.${process.env.NODE_ENV}`,
@@ -51,6 +52,7 @@ import { CorsMiddleware } from './cors/cors.middleware';
       database: process.env.VITE_POSTGRES_DB,
       models: [User, Role, UserRoles, Post, Rating, Device, Basket, BasketDevice, Type, Brand, DeviceInfo, TypeBrand],
       autoLoadModels: true,
+      synchronize: true
     }),
     UsersModule,
     RolesModule,

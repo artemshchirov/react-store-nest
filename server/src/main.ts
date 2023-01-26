@@ -2,11 +2,9 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule } from '@nestjs/swagger';
 import { DocumentBuilder } from '@nestjs/swagger';
-import * as basicAuth from 'express-basic-auth';
-import express from 'express';
 import { Logger } from '@nestjs/common';
-import { CorsMiddleware } from './cors/cors.middleware';
-import { OriginValidationService } from './cors/origin.validation.service';
+import * as basicAuth from 'express-basic-auth';
+import * as bodyParser from 'body-parser';
 
 
 
@@ -16,16 +14,17 @@ async function bootstrap() {
   const PORT = process.env.PORT || 5000;
   const app = await NestFactory.create(AppModule);
 
-  // TODO config secure cors!!!
-  app.enableCors()
+  // TODO config secure cors and import whitelist domains from env!!!
+  const allowedDomains = ['http://localhost:3000', 'http://localhost:4000', 'http://localhost:6000']
+  app.enableCors({
+    // allowedHeaders: ['Content-Type, Authorization'],
+    // methods: ['POST', 'PUT', 'DELETE', 'GET'],
+    origin: allowedDomains,
+    credentials: true,
+  })
 
-  // TODO
-  // app.use(express.json({ limit: '50mb' }));
-  // app.use(express.urlencoded({ limit: '50mb' }));
-
-
-  // TODO refactor
-  app.use(new CorsMiddleware(new OriginValidationService()).use);
+  app.use(bodyParser.json({ limit: '50mb' }));
+  app.use(bodyParser.urlencoded({ extended: false }));
 
 
   if (SWAGGER_ENVS.includes(process.env.NODE_ENV)) {
@@ -36,7 +35,6 @@ async function bootstrap() {
       },
     }));
   }
-
 
   // TODO create and use SWAGGER_CONFIG.title etc
   const config = new DocumentBuilder()
@@ -55,8 +53,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('/api/docs', app, document);
 
-
-
   // TODO
   // app.useGlobalPipes(new ValidationPipe());
   // app.useGlobalFilters(new AppExceptionFilter());
@@ -67,14 +63,7 @@ async function bootstrap() {
       'Bootstrap'
     )
   );
-
-  // TODO
-  // await app.listen(config().serverPort, () => {
-  //   Logger.log(
-  //     `Server running on http://localhost:${config().serverPort}`,
-  //     'Bootstrap'
-  //   );
-  // });
 }
+
 
 bootstrap();

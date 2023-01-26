@@ -14,7 +14,7 @@ import { Device } from '../device/device.model';
 
 interface BasketDeviceCreationAttrs {
   basketId: number,
-  deviceId: number  // TODO: look at this field 
+  deviceId: number  // TODO look at this field 
 }
 
 @Table({ tableName: 'basket_device' })

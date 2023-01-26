@@ -20,7 +20,7 @@ export class UsersController {
 
   @ApiOperation({ summary: 'Create user' })
   @ApiResponse({ status: 200, type: User })
-  // @UsePipes(ValidationPipe)  // DESC: validate router incoming data
+  // @UsePipes(ValidationPipe)  // DESC validate router incoming data
   @Post()
   create(@Body() userDto: CreateUserDto) {
     return this.usersService.createUser(userDto);
@@ -50,7 +50,7 @@ export class UsersController {
   @ApiOperation({ summary: 'Ban user' })
   @ApiResponse({ status: 200 })
   @Roles('ADMIN')
-  @UseGuards(RolesGuard) // DESC: protect router with auth
+  @UseGuards(RolesGuard) // DESC protect router with auth
   @Post('/ban')
   ban(@Body() dto: BanUserDto) {
     return this.usersService.ban(dto);
