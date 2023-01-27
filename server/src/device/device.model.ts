@@ -17,6 +17,8 @@ import { DeviceInfo } from '../device-info/device-info.model';
 
 
 interface DeviceCreationAttrs {
+  name: string,
+  price: number,
   typeId: number,
   brandId: number
 }
@@ -32,6 +34,31 @@ export class Device extends Model<Device, DeviceCreationAttrs> {
     primaryKey: true,
   })
   id: number;
+
+
+  @ApiProperty({ example: 'Samsung A51 Gaming', description: 'Device name' })
+  @Column({
+    type: DataType.STRING,
+    unique: true,
+    allowNull: false
+  })
+  name: string;
+
+
+  @ApiProperty({ example: '1000', description: 'Device price' })
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: false
+  })
+  price: number;
+
+
+  @ApiProperty({ example: '5', description: 'Device rating' })
+  @Column({
+    type: DataType.INTEGER,
+    defaultValue: 0
+  })
+  rating: number;
 
 
   @ForeignKey(() => Type)
