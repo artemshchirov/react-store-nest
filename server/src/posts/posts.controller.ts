@@ -20,7 +20,7 @@ export class PostsController {
 
   
   @ApiOperation({ summary: 'Create post' })
-  @ApiResponse({ status: 200, type: Post })
+  @ApiResponse({ status: 201, type: Post })
   @Post()
   @UseInterceptors(FileInterceptor('image'))
   create(@Body() dto: CreatePostDto, @UploadedFile() image: Express.Multer.File) {

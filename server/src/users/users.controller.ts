@@ -19,7 +19,7 @@ export class UsersController {
 
 
   @ApiOperation({ summary: 'Create user' })
-  @ApiResponse({ status: 200, type: User })
+  @ApiResponse({ status: 201, type: User })
   // @UsePipes(ValidationPipe)  // DESC validate router incoming data
   @Post()
   create(@Body() userDto: CreateUserDto) {
