@@ -1,10 +1,12 @@
+import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import { SwaggerModule } from '@nestjs/swagger';
 import { DocumentBuilder } from '@nestjs/swagger';
-import { Logger } from '@nestjs/common';
-import * as basicAuth from 'express-basic-auth';
 import * as bodyParser from 'body-parser';
+import * as basicAuth from 'express-basic-auth';
+import { AppModule } from './app.module';
+import { ValidationPipe } from './pipes/validation.pipe';
+import { AppExceptionFilter } from './exception/exception.filter';
 
 
 
@@ -26,15 +28,19 @@ async function bootstrap() {
   app.use(bodyParser.json({ limit: '50mb' }));
   app.use(bodyParser.urlencoded({ extended: false }));
 
+  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalFilters(new AppExceptionFilter());
 
   if (SWAGGER_ENVS.includes(process.env.NODE_ENV)) {
     app.use(['/api/docs', '/api/docs-json'], basicAuth({
       challenge: true,
       users: {
-        [process.env.VITE_SWAGGER_USER]: process.env.VITE_SWAGGER_PASSWORD,
+        [process.env.VITE_SWAGGER_USERNAME]: process.env.VITE_SWAGGER_PASSWORD,
       },
     }));
   }
+
+
 
   // TODO create and use SWAGGER_CONFIG.title etc
   const config = new DocumentBuilder()
@@ -54,8 +60,8 @@ async function bootstrap() {
   SwaggerModule.setup('/api/docs', app, document);
 
   // TODO
-  // app.useGlobalPipes(new ValidationPipe());
-  // app.useGlobalFilters(new AppExceptionFilter());
+  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalFilters(new AppExceptionFilter());
 
   await app.listen(PORT, () =>
     Logger.log(
