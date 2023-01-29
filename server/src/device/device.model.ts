@@ -19,6 +19,7 @@ import { DeviceInfo } from '../device-info/device-info.model';
 interface DeviceCreationAttrs {
   name: string,
   price: number,
+  image?: string;
   typeId: number,
   brandId: number
 }
@@ -51,6 +52,11 @@ export class Device extends Model<Device, DeviceCreationAttrs> {
     allowNull: false
   })
   price: number;
+
+
+  @ApiProperty({ example: 'imageFile.jpg', description: 'Device image' })
+  @Column({ type: DataType.STRING })
+  image: string;
 
 
   @ApiProperty({ example: '5', description: 'Device rating' })

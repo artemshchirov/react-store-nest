@@ -8,12 +8,13 @@ import { Brand } from '../brand/brand.model';
 import { Rating } from '../rating/rating.model';
 import { BasketDevice } from '../basket-device/basket-device.model';
 import { DeviceInfo } from '../device-info/device-info.model';
+import { FilesModule } from '../files/files.module';
 
 
 
 @Module({
   providers: [DeviceService],
   controllers: [DeviceController],
-  imports: [SequelizeModule.forFeature([Device, Type, Brand, Rating, BasketDevice, DeviceInfo])]
+  imports: [SequelizeModule.forFeature([Device, Type, Brand, Rating, BasketDevice, DeviceInfo]), FilesModule]
 })
 export class DeviceModule { }
