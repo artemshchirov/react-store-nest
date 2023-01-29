@@ -15,7 +15,7 @@ export class PostsService {
   ) { }
 
 
-  async createPost(dto: CreatePostDto, image: any) {
+  async createPost(dto: CreatePostDto, image: any) {  // TODO refactor any
     const fileName = await this.fileService.createFile(image);
     const post = await this.postRepository.create({ ...dto, image: fileName });
     return post;

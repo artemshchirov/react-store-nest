@@ -13,9 +13,9 @@ import { Device } from '../device/device.model';
 
 
 interface RatingCreationAttrs {
+  rate: number
   userId: number,
   deviceId: number,
-  rate: number
 }
 
 @Table({ tableName: 'rating' })

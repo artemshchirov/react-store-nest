@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNumber } from 'class-validator';
+import { IsString, IsNumber, IsOptional } from 'class-validator';
 
 
 
@@ -14,6 +14,7 @@ export class CreatePostDto {
   @ApiProperty({ example: 'Hello world!', description: 'Content of a post' })
   @IsString({ message: 'Must be string' })
   readonly content: string;
+
 
   // TODO receive userId from token, not dto
   @ApiProperty({ example: '1', description: 'Unique user id' })

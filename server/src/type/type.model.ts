@@ -14,10 +14,10 @@ import { Device } from '../device/device.model';
 
 
 interface TypeCreationAttrs {
-  type: string
+  name: string
 }
 
-@Table({ tableName: 'rating' })
+@Table({ tableName: 'type' })
 export class Type extends Model<Type, TypeCreationAttrs> {
 
 
@@ -36,7 +36,7 @@ export class Type extends Model<Type, TypeCreationAttrs> {
     unique: true,
     allowNull: false
   })
-  type: string;
+  name: string;
 
 
   @HasMany(() => Device)

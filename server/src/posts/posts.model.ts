@@ -14,8 +14,8 @@ import { User } from '../users/users.model';
 interface PostCreationAttrs {
   title: string;
   content: string;
-  userId: number;
   image: string;
+  userId: number;
 }
 
 @Table({ tableName: 'posts' })
@@ -42,6 +42,7 @@ export class Post extends Model<Post, PostCreationAttrs> {
   content: string;
 
 
+  @ApiProperty({ example: 'imageFile.jpg', description: 'Device image' })
   @Column({ type: DataType.STRING })
   image: string;
 

@@ -18,7 +18,7 @@ export class TypeService {
     return type;
   }
 
-  
+
   async getAllTypes() {
     const types = await this.typeRepository.findAll({ include: { all: true } });
     return types;

@@ -27,5 +27,9 @@ export class PostsController {
     return this.postsService.createPost(dto, image);
   }
 
+
   // TODO getAll
+
+
+  // TODO getPostsByUser
 }

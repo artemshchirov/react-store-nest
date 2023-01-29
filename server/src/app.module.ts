@@ -40,7 +40,7 @@ import { AppService } from './app.service';
     ConfigModule.forRoot({
       envFilePath: `.env.${process.env.NODE_ENV}`,
     }),
-    ServeStaticModule.forRoot({
+    ServeStaticModule.forRoot({  // The file is available at: https://my-url/file.jpg
       rootPath: path.resolve(__dirname, 'static'),
     }),
     SequelizeModule.forRoot({
