@@ -5,7 +5,7 @@ export interface ITemplateNameProps {}
 
 export const TemplateName: React.FC = ({}: ITemplateNameProps) => {
   return (
-    <div className={styles.templateName} data-testid="TemplateName">
+    <div className={styles.templateName}>
       TemplateName
     </div>
   );

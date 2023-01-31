@@ -8,10 +8,10 @@ import {
 } from "./utils/constants";
 import { Admin } from "./pages/Admin/Admin.lazy";
 import { Basket } from "./pages/Basket/Basket.lazy";
-import { Auth } from "./pages/Auth/Auth.lazy";
 import { Shop } from "./pages/Shop/Shop.lazy";
 import { DevicePage } from "./pages/DevicePage/DevicePage.lazy";
 import { Signup } from "./pages/Signup/Signup.lazy";
+import { Signin } from './pages/Signin/Signin.lazy';
 
 export const authRoutes = [
   {
@@ -31,7 +31,7 @@ export const publicRoutes = [
   },
   {
     path: LOGIN_ROUTE,
-    Component: Auth,
+    Component: Signin,
   },
   {
     path: REGISTRATION_ROUTE,

@@ -1,13 +1,13 @@
-import React, { FC, useState } from "react";
-import { useForm } from "react-hook-form";
+import React, { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import styles from "./Signup.module.scss";
-import { Button, FormField } from "../../components";
+import { useForm } from "react-hook-form";
+import { Button, CustomLink, FormField } from "../../components";
 import { fetchUserSignup } from "../../api/account";
 import { normalizePhoneNumber } from "../../utils/normalizePhoneNumber";
+import styles from "./Signup.module.scss";
 
-export interface ISignupProps {
+export interface ISignupForm {
   firstName: string;
   lastName: string;
   phoneNumber: string;
@@ -36,7 +36,7 @@ const schema = yup.object().shape({
     .required("Password is required"),
 });
 
-export const Signup: FC = () => {
+export const Signup: React.FC = () => {
   const [isFocused, setIsFocused] = useState({
     firstName: false,
     lastName: false,
@@ -53,13 +53,13 @@ export const Signup: FC = () => {
     watch,
     handleSubmit,
     formState: { errors },
-  } = useForm<ISignupProps>({
+  } = useForm<ISignupForm>({
     resolver: yupResolver(schema),
   });
 
   const watchAllFields = watch();
 
-  const onSubmit = (formData: ISignupProps) => {
+  const onSubmit = (formData: ISignupForm) => {
     console.log("formData:", formData);
     const phoneNumberNormalize = normalizePhoneNumber(formData.phoneNumber);
     if (formData.password === formData.passwordConfirm) {
@@ -78,21 +78,29 @@ export const Signup: FC = () => {
 
   const handleFocus = (evt: React.FocusEvent<HTMLInputElement>) => {
     setIsFocused({ ...isFocused, [evt.target.name]: true });
+    // fix chrome initial autofill bug
+    evt.currentTarget.removeAttribute("readOnly");
   };
 
   const handleBlur = (evt: React.FocusEvent<HTMLInputElement>) => {
-    if (watchAllFields[evt.target.name as keyof ISignupProps] !== "") {
+    if (watchAllFields[evt.target.name as keyof ISignupForm] !== "") {
       setIsFocused({ ...isFocused, [evt.target.name]: true });
     } else {
       setIsFocused({ ...isFocused, [evt.target.name]: false });
     }
+    // fix chrome initial autofill bug
+    evt.currentTarget.setAttribute("readOnly", evt.currentTarget.value);
   };
 
   return (
-    <div className={styles.signup} data-testid="Signup">
+    <section className={styles.signup} data-testid="Signup">
       <div className={styles.signup__content}>
         <h1 className={styles.signup__title}>Signup</h1>
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className={styles.form}
+          onSubmit={handleSubmit(onSubmit)}
+          noValidate
+        >
           <div className={styles.form__fields}>
             <FormField
               label="First name"
@@ -164,8 +172,9 @@ export const Signup: FC = () => {
           <Button typeButton="submit" className={styles.form__button}>
             Signup
           </Button>
+          <CustomLink href="/signin">Signin</CustomLink>
         </form>
       </div>
-    </div>
+    </section>
   );
 };

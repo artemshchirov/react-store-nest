@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from "react";
 
-const LazyAdmin = lazy(() =>
+const LazyTemplateName = lazy(() =>
   import("./TemplateName").then(module => ({ default: module.TemplateName }))
 );
 
@@ -9,7 +9,7 @@ export const TemplateName = (
 ) => {
   return (
     <Suspense fallback={null}>
-      <LazyAdmin {...props} />
+      <LazyTemplateName {...props} />
     </Suspense>
   );
 };

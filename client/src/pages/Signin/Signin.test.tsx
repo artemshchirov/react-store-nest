@@ -1,14 +1,14 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import { Footer } from "./Footer";
+import { Signin } from "./Signin";
 
-describe("<Footer />", () => {
+describe("<Signin />", () => {
   test("it should mount", () => {
-    render(<Footer />);
+    render(<Signin />);
 
-    const footer = screen.getByTestId("Footer");
+    const signin = screen.getByTestId("Signin");
 
-    expect(footer).toBeInTheDocument();
+    expect(signin).toBeInTheDocument();
   });
 });
