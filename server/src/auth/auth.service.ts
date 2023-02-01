@@ -7,20 +7,26 @@ import {
 import { JwtService } from '@nestjs/jwt';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { UsersService } from 'src/users/users.service';
+import { BasketService } from '../basket/basket.service';
 import { User } from 'src/users/users.model';
 import * as bcrypt from 'bcryptjs';
+
+
 
 @Injectable()
 export class AuthService {
   constructor(
     private userService: UsersService,
+    private basketService: BasketService,
     private jwtService: JwtService,
   ) { }
+
 
   async login(userDto: CreateUserDto) {
     const user = await this.validateUser(userDto);
     return this.generateToken(user);
   }
+
 
   async registration(userDto: CreateUserDto) {
     const candidate = await this.userService.getUserByEmail(userDto.email);
@@ -36,9 +42,13 @@ export class AuthService {
       ...userDto,
       password: hashPassword,
     });
+    const basket = await this.basketService.createBasket({ userId: user.id })
+    console.log('user created ==>', user)
+    console.log('basket created ==>', basket)
     return this.generateToken(user);
   }
-  
+
+
   private async generateToken(user: User) {
     const payload = { email: user.email, id: user.id, roles: user.roles };
     return {
@@ -46,15 +56,18 @@ export class AuthService {
     };
   }
 
+
   private async validateUser(userDto: CreateUserDto) {
     const user = await this.userService.getUserByEmail(userDto.email);
     const passwordEquals = await bcrypt.compare(
       userDto.password,
       user.password,
     );
+
     if (user && passwordEquals) {
       return user;
     }
+
     throw new UnauthorizedException({
       message: 'Sorry the email or password is invalid',
     });

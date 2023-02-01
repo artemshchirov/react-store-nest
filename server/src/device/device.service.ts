@@ -2,8 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Device } from './device.model';
 import { CreateDeviceDto } from './dto/create-device.dto';
-import { DeviceInfo } from '../device-info/device-info.model';
 import { FilesService } from '../files/files.service';
+import { DeviceInfo } from '../device-info/device-info.model';
+import { DeviceInfoService } from '../device-info/device-info.service';
 
 
 
@@ -12,6 +13,7 @@ export class DeviceService {
   constructor(
     @InjectModel(Device)
     private deviceRepository: typeof Device,
+    private deviceInfoService: DeviceInfoService,
     private fileService: FilesService,
   ) { }
 
@@ -19,6 +21,14 @@ export class DeviceService {
   async createDevice(dto: CreateDeviceDto, image: any) { // TODO refactor any
     const fileName = await this.fileService.createFile(image);
     const device = await this.deviceRepository.create({ ...dto, image: fileName });
+    console.log('dto Device ==>', dto)
+    console.log('device ==>', device)
+
+    if (dto.info) {
+      console.log('if dto.info ==>', dto.info)
+      this.deviceInfoService.createDeviceInfo(dto.info, device.id)
+    }
+
     return device;
   }
 
