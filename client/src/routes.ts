@@ -9,7 +9,7 @@ import {
 import { Admin } from "./pages/Admin/Admin.lazy";
 import { Basket } from "./pages/Basket/Basket.lazy";
 import { Shop } from "./pages/Shop/Shop.lazy";
-import { DevicePage } from "./pages/DevicePage/DevicePage.lazy";
+import { Device } from "./pages/Device/Device.lazy";
 import { Signup } from "./pages/Signup/Signup.lazy";
 import { Signin } from './pages/Signin/Signin.lazy';
 
@@ -39,7 +39,7 @@ export const publicRoutes = [
   },
   {
     path: DEVICE_ROUTE + "/:id",
-    Component: DevicePage,
+    Component: Device,
   },
   {
     path: "*",

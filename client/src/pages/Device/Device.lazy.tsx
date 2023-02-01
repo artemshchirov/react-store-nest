@@ -1,13 +1,13 @@
 import React, { lazy, Suspense } from "react";
 
-const LazyDevicePage = lazy(() =>
-  import("./DevicePage").then(module => ({ default: module.DevicePage }))
+const LazyDevice = lazy(() =>
+  import("./Device").then(module => ({ default: module.Device }))
 );
 
-export const DevicePage = (
+export const Device = (
   props: JSX.IntrinsicAttributes & { children?: React.ReactNode }
 ) => (
   <Suspense fallback={null}>
-    <LazyDevicePage {...props} />
+    <LazyDevice {...props} />
   </Suspense>
 );

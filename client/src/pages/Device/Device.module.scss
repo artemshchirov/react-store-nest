@@ -1,0 +1,70 @@
+.device {
+  background-color: whitesmoke;
+  padding: 10px;
+  width: 100%;
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__image {
+    width: 240px;
+    height: 265px;
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__rating {
+    width: 240px;
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    background: url("../../assets/images/bigStar.png") no-repeat center center;
+    background-size: contain;
+  }
+
+  &__basket {
+    width: 240px;
+    height: 265px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border: 5px solid lightgray;
+  }
+
+  &__price {
+    font-size: 32px;
+  }
+
+  &__info {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__feat {
+    padding: 10px;
+    &_type {
+      &_light {
+        background-color: transparent;
+      }
+      &_dark {
+        background-color: lightgray;
+      }
+    }
+  }
+}
