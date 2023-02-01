@@ -1,2 +1,22 @@
 .shop {
+  min-height: calc(100vh - 50px);
+  padding: 20px;
+  background-color: grey;
+  display: grid;
+  grid-template-columns: 200px repeat(3, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-template-areas:
+    "type products products products";
+    
+
+  &__products {
+    grid-area: products;
+    display: grid;
+    grid-template-columns: 1;
+    grid-template-rows: 50px 1fr;
+    grid-template-areas:
+    "brand"
+    "devices";
+    background-color: lime;
+  }
 }

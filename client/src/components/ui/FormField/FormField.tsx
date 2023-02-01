@@ -79,12 +79,14 @@ export const FormField = <T,>({
           <span className={styles.formField__label_required}>*</span>
         )}
       </label>
+
       {type === "text" && (
         <>
           {renderInput()}
           {error && <span className={styles.formField_error}>{error}</span>}
         </>
       )}
+
       {type === "password" && (
         <>
           {renderInput()}
@@ -101,6 +103,7 @@ export const FormField = <T,>({
           {error && <span className={styles.formField_error}>{error}</span>}
         </>
       )}
+
       {type === "tel" && (
         <>
           <InputPhone

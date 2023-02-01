@@ -1,0 +1,23 @@
+.brand {
+  width: 100%;
+  height: 100%;
+  background-color: yellow;
+  grid-area: brand;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__list {
+    display: flex;
+    width: max-content;
+    justify-content: space-evenly;
+    background-color: burlywood;
+  }
+
+  &__item {
+    margin: 5px 20px;
+    padding: 5px;
+    background-color: red;
+    cursor: pointer;
+  }
+}

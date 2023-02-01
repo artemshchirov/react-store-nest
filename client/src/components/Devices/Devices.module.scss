@@ -1,0 +1,49 @@
+.devices {
+  background-color: palevioletred;
+
+  &__list {
+    background-color: whitesmoke;
+    height: 100%;
+    display: grid;
+    grid: auto / repeat(4, 1fr);
+    grid-gap: 40px 20px;
+  }
+}
+
+.device {
+  width: 100%;
+  height: 100%;
+  background-color: orange;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  // padding: 50px;
+  // justify-self: center;
+  // align-self: center;
+  // text-align: center;
+  cursor: pointer;
+  border: 1px solid black;
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+  }
+
+  &__info {
+    background-color: #fff;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    line-height: 1.17;
+  }
+}

@@ -117,6 +117,7 @@ export const InputPhone = forwardRef(
           onKeyDown={handlePhoneKeyDown}
           onPaste={handlePhonePaste}
           ref={ref}
+          readOnly // fix chrome initial autofill bug
           {...rest}
         />
       </>

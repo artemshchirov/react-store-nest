@@ -15,6 +15,7 @@ import { ReactComponent as Pdf } from "../../../assets/icons/files/Pdf.svg";
 import { ReactComponent as Plus } from "../../../assets/icons/Plus.svg";
 import { ReactComponent as Search } from "../../../assets/icons/Search.svg";
 import { ReactComponent as Spinner } from "../../../assets/icons/Spinner.svg";
+import { ReactComponent as Starred } from "../../../assets/icons/Starred.svg";
 import { ReactComponent as Telegram } from "../../../assets/icons/Telegram.svg";
 import { ReactComponent as Visibility } from "../../../assets/icons/Visibility.svg";
 import { ReactComponent as VisibilityOff } from "../../../assets/icons/VisibilityOff.svg";
@@ -35,6 +36,7 @@ export type IconType =
   | "Plus"
   | "Search"
   | "Spinner"
+  | "Starred"
   | "Telegram"
   | "Visibility"
   | "VisibilityOff";
@@ -55,6 +57,7 @@ export const iconTypes = new Map([
   ["Plus", <Plus key={genUid()} />],
   ["Search", <Search key={genUid()} />],
   ["Spinner", <Spinner key={genUid()} />],
+  ["Starred", <Starred key={genUid()} />],
   ["Telegram", <Telegram key={genUid()} />],
   ["Visibility", <Visibility key={genUid()} />],
   ["VisibilityOff", <VisibilityOff key={genUid()} />],

@@ -25,15 +25,19 @@ export const Input = forwardRef(
     ref: ForwardedRef<HTMLInputElement>
   ): JSX.Element => {
     return (
-      <input
-        className={classNames(className, styles.input, {
-          [styles.input_error]: error,
-        })}
-        name={name}
-        type={type}
-        ref={ref}
-        {...rest}
-      />
+      <>
+        <input
+          className={classNames(className, styles.input, {
+            [styles.input_error]: error,
+          })}
+          name={name}
+          type={type}
+          ref={ref}
+          // TODO check initial autofill (include <InputPhone />) in other browsers
+          readOnly // fix chrome initial autofill bug
+          {...rest}
+        />
+      </>
     );
   }
 );

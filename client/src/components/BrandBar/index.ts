@@ -1,0 +1,1 @@
+export { BrandBar as default } from "./BrandBar";

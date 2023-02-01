@@ -5,5 +5,6 @@ import CustomLink from "./CustomLink";
 import Footer from "./Footer";
 import Logo from "./Logo";
 import Header from "./Header";
+import TypeBar from "./TypeBar";
 
-export { Navbar, Button, App, Header, AppRouter, CustomLink, Footer, Logo, Input, FormField };
+export { Navbar, Button, App, Header, AppRouter, CustomLink, Footer, Logo, Input, FormField, TypeBar };

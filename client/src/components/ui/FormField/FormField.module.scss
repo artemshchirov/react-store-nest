@@ -5,9 +5,10 @@
   $this: &;
   position: relative;
   margin-bottom: 30px;
+  padding: 0;
+  border: none;
   height: 56px;
   width: 100%;
-  border-radius: 4px;
   word-wrap: break-word;
 
   &__label {
@@ -19,6 +20,7 @@
     color: rgba(0, 0, 0, 0.54);
     pointer-events: none;
     transition: all 0.2s;
+    border-radius: 4px;
 
     &_required {
       color: $color-red;
@@ -36,6 +38,7 @@
       top: 50%;
       transform: translateY(-50%);
       right: 12px;
+      cursor: pointer;
 
       svg {
         fill: rgba(0, 0, 0, 0.54);

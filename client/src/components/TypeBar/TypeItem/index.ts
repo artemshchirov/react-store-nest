@@ -1,0 +1,1 @@
+export { TypeItem as default } from "./TypeItem";

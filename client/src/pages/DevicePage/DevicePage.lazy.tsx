@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from "react";
 
-const LazyAdmin = lazy(() =>
+const LazyDevicePage = lazy(() =>
   import("./DevicePage").then(module => ({ default: module.DevicePage }))
 );
 
@@ -8,6 +8,6 @@ export const DevicePage = (
   props: JSX.IntrinsicAttributes & { children?: React.ReactNode }
 ) => (
   <Suspense fallback={null}>
-    <LazyAdmin {...props} />
+    <LazyDevicePage {...props} />
   </Suspense>
 );
