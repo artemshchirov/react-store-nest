@@ -2,3 +2,13 @@
 
 E-commerce app where buyers can see a catalog of products or services and electronically purchase them.
 Written with React.js, TypeScript and NestJS
+
+## TODO
+
+- [ ] Prettier and ESlint all rules
+- [ ] Github Actions for tests
+- [ ] DELETE Devices
+- [ ] Implement basket module logic
+- [ ] Add role guard for actual addresses
+- [ ] Connect ImageKit
+- [ ] Fix routes
