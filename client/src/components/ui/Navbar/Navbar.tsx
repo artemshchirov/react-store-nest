@@ -1,19 +1,26 @@
 import React, { useContext } from "react";
-import styles from "./Navbar.module.scss";
+import styles from "./NavBar.module.scss";
 import { UserContext } from "../../../context/UserContext";
 import Button from "../Button";
 import { observer } from "mobx-react-lite";
-export interface NavbarProps {}
+import { useNavigate } from "react-router-dom";
+import {
+  ADMIN_ROUTE,
+  SIGNIN_ROUTE,
+  SIGNUP_ROUTE,
+} from "../../../utils/constants";
 
-export const Navbar = observer(({}: NavbarProps) => {
+export const NavBar = observer(() => {
   const { user } = useContext(UserContext);
-
+  const navigate = useNavigate();
   return (
-    <nav className={styles.navbar} data-testid="Navbar">
+    <nav className={styles.nav}>
       {user?.isAuth ? (
         <>
-          <Button typeButton="button">Admin</Button>
-          <Button typeButton="button" onClick={() => user.setIsAuth(false)}>
+          <Button typeButton="button" onClick={() => navigate(ADMIN_ROUTE)}>
+            Admin
+          </Button>
+          <Button typeButton="button" onClick={() => navigate(SIGNIN_ROUTE)}>
             Logout
           </Button>
         </>

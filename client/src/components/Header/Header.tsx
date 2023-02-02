@@ -1,19 +1,17 @@
 import React from "react";
-import styles from "./Header.module.scss";
-import { Navbar, Button } from "../ui";
 import Logo from "../Logo";
-import { NavLink } from "react-router-dom";
+import { NavBar } from "../ui";
+import { CustomLink } from "../CustomLink/CustomLink";
 import { SHOP_ROUTE } from "../../utils/constants";
+import styles from "./Header.module.scss";
 
-export interface HeaderProps {}
-
-export const Header = ({}: HeaderProps) => {
+export const Header: React.FC = () => {
   return (
     <header className={styles.header} data-testid="Header">
-      <NavLink to={SHOP_ROUTE}>
+      <CustomLink href={SHOP_ROUTE}>
         <Logo />
-      </NavLink>
-      <Navbar />
+      </CustomLink>
+      <NavBar />
     </header>
   );
 };

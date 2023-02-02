@@ -17,7 +17,7 @@ export const Portal: React.FC<IPortalProps> = ({
 }) => {
   return root
     ? ReactDOM.createPortal(
-        <Element className={cn("portal")}>{children}</Element>,
+        <Element className={cn("portal", className)}>{children}</Element>,
         root
       )
     : null;

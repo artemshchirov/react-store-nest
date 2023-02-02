@@ -1,17 +1,15 @@
-import React, { FC } from "react";
+import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Header, AppRouter } from "..";
 import styles from "./App.module.scss";
 
-export const App: FC = () => {
+export const App: React.FC = () => {
   return (
     <div className={styles.app}>
-      <div className={styles.app__container}>
-        <Router>
-          <Header />
-          <AppRouter />
-        </Router>
-      </div>
+      <Router>
+        <Header />
+        <AppRouter />
+      </Router>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import {
   ADMIN_ROUTE,
-  LOGIN_ROUTE,
-  REGISTRATION_ROUTE,
+  SIGNIN_ROUTE,
+  SIGNUP_ROUTE,
   SHOP_ROUTE,
   BASKET_ROUTE,
   DEVICE_ROUTE,
@@ -30,11 +30,11 @@ export const publicRoutes = [
     Component: Shop,
   },
   {
-    path: LOGIN_ROUTE,
+    path: SIGNIN_ROUTE,
     Component: Signin,
   },
   {
-    path: REGISTRATION_ROUTE,
+    path: SIGNUP_ROUTE,
     Component: Signup,
   },
   {

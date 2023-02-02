@@ -7,7 +7,7 @@ export type ButtonType = "button" | "submit" | "reset";
 export interface IButtonProps extends DOMAttributes<HTMLButtonElement> {
   className?: string;
   isDisabled?: boolean;
-  typeButton: ButtonType;
+  typeButton?: ButtonType;
   onClick?: (evt: React.MouseEvent) => void;
 }
 
@@ -15,7 +15,7 @@ export const Button: FC<IButtonProps> = ({
   children,
   className,
   isDisabled,
-  typeButton,
+  typeButton = "button",
   onClick,
   ...rest
 }) => {
