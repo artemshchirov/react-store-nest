@@ -1,0 +1,73 @@
+@import "../../../styles";
+
+.modal {
+  &_open {
+  }
+
+  &__header {
+    h2 {
+      @include roboto-28-bold;
+    }
+    
+    &_align {
+      &__start {
+      }
+      &__center {
+      }
+      &__end {
+      }
+    }
+  }
+
+  &__content {
+    margin-top: 24px;
+  }
+
+  &__footer {
+    margin-top: 32px;
+  }
+
+  &__default {
+    padding: 40px;
+    color: $color-text;
+
+    &_size {
+      &_small {
+      }
+
+      &_medium {
+        min-width: 760px;
+        max-width: 760px;
+        width: 100px;
+      }
+
+      &_large {
+      }
+    }
+
+    &_button {
+      &_close {
+        width: 20px;
+        height: 20px;
+
+        svg {
+          fill: $color-dark-gray;
+          transition: all 0.15s;
+        }
+
+        &:hover {
+          svg {
+            fill: $color-suit-gray;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ----- Modal center ----- */
+.react-responsive-modal-root .react-responsive-modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
