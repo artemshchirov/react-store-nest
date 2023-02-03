@@ -93,6 +93,17 @@ Modal.Header = ({
   );
 };
 
+export interface IModalTitleProps {
+  className?: string;
+  children?: React.ReactNode;
+}
+
+Modal.Title = ({ className, children }: IModalTitleProps) => {
+  return (
+    <h2 className={classNames(styles.modal__title, className)}>{children}</h2>
+  );
+};
+
 export interface IModalContentProps {
   className?: string;
   children?: React.ReactNode;
