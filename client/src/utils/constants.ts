@@ -4,3 +4,5 @@ export const SHOP_ROUTE = "/";
 export const DEVICE_ROUTE = "/device";
 export const BASKET_ROUTE = "/basket";
 export const ADMIN_ROUTE = "/admin";
+
+export const TRANSITION = 150;
