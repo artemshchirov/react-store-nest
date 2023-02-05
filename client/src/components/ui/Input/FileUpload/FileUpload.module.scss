@@ -1,0 +1,35 @@
+@import "../../../../styles";
+
+.file {
+  margin-top: 24px;
+  padding: 18px 40px 18px 5px;
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid transparent;
+
+  &__label {
+    &_required {
+      color: $color-red;
+    }
+  }
+
+  &__input {
+    margin-top: 3px;
+  }
+
+  &__preview {
+    width: 150px;
+    height: 150px;
+    margin-top: 6px;
+    
+  }
+
+  &_error {
+    @include roboto-12-regular;
+    display: block;
+    padding-top: 5px;
+    color: $color-red;
+    transition: all 0.3s;
+  }
+}

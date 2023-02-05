@@ -1,0 +1,103 @@
+@import "../../../styles";
+
+$transition: 0.15s;
+
+.create-device {
+  height: 100%;
+
+  &__input {
+    margin: 34px 4px 0;
+
+    &_type {
+      &_property {
+        margin: 4px;
+        padding: 0;
+      }
+    }
+  }
+
+  &__button {
+    margin-top: 34px;
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    &-item {
+      position: relative;
+      width: 150px;
+      padding: 0 50px;
+      display: flex;
+      justify-content: center;
+      border-bottom: 1px solid $color-light-gray;
+      cursor: pointer;
+      transition: all 0.15s;
+
+      &:hover {
+        border-bottom: 1px solid $color-primary;
+      }
+    }
+
+    &-title {
+    }
+  }
+
+  /* Open/Close DropDown */
+
+  &_enter {
+    opacity: 0;
+  }
+
+  &_enter_active {
+    opacity: 1;
+    transition: opacity $transition;
+  }
+
+  &_exit {
+    opacity: 1;
+    transition: opacity $transition;
+  }
+
+  &_exit_active {
+    opacity: 0;
+    transition: opacity $transition;
+  }
+}
+
+.catalog {
+  content: "";
+  position: absolute;
+  top: 30px;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: max-content;
+  height: max-content;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: white;
+  box-shadow: $shadow-perimeter;
+  z-index: 105;
+
+  &__menu {
+    padding: 4px;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      margin: 3px;
+      padding: 0 16px;
+      min-height: 44px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s;
+
+      &:hover {
+        background-color: rgba(223, 213, 195, 1);
+      }
+    }
+  }
+}

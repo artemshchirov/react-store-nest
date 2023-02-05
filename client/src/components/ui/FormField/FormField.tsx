@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { Path } from "react-hook-form";
+import { FieldValues, Path } from "react-hook-form";
 import styles from "./FormField.module.scss";
 import classNames from "classnames";
 import { Input, Icon } from "../../ui";
 import InputPhone from "../Input/InputPhone";
 
-export type FormFieldType = "text" | "password" | "tel" | "textarea";
+export type FormFieldType = "text" | "number" | "password" | "tel" | "textarea";
 
-export interface IFormFieldProps<T> {
+export interface IFormFieldProps<T extends FieldValues> {
   className?: string;
   error?: string;
   label?: string;
-  name?: Path<T>;
+  name?: string | Path<T>;
   // register?: (Ref, RegisterOptions?) => { onChange; onBlur; name; ref };
   register?: any; // TODO refactor any
   type: FormFieldType;
@@ -21,7 +21,7 @@ export interface IFormFieldProps<T> {
   onFocus?: (evt: React.FocusEvent<HTMLInputElement>) => void;
 }
 
-export const FormField = <T,>({
+export const FormField = <T extends FieldValues>({
   className,
   error,
   label,
@@ -43,6 +43,9 @@ export const FormField = <T,>({
     if (inputType === "text") {
       return "text";
     }
+    if (inputType === "number") {
+      return "number";
+    }
     if (inputType === "password") {
       inputType = isShowPassword ? "text" : "password";
       return inputType;
@@ -62,6 +65,13 @@ export const FormField = <T,>({
         type={handleType(type)}
         onFocus={onFocus}
         onBlur={onBlur}
+
+        // TODO add exclude + and - in numbers
+        // onKeyPress={(event) => {
+        //   if (!/[0-9]/.test(event.key)) {
+        //     event.preventDefault();
+        //   }
+        // }}
       />
     );
   };
@@ -71,7 +81,6 @@ export const FormField = <T,>({
       className={classNames(styles.formField, className, {
         [styles.formField_active]: isFocused,
       })}
-      data-testid="FormField"
     >
       <label className={styles.formField__label} htmlFor={name}>
         {label}
@@ -80,7 +89,7 @@ export const FormField = <T,>({
         )}
       </label>
 
-      {type === "text" && (
+      {(type === "text" || type === "number") && (
         <>
           {renderInput()}
           {error && <span className={styles.formField_error}>{error}</span>}
