@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { Button, CustomLink, FormField } from "../../components";
 import { fetchUserSignup } from "../../api/account";
 import { normalizePhoneNumber } from "../../utils/normalizePhoneNumber";
-import { useInput } from "../../hooks/useInput";
+import { useInputFocus } from "../../hooks/useInputFocus";
 import { usePasswordMatch } from "../../hooks/usePasswordMatch";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import styles from "./Signup.module.scss";
 
 export interface ISignupForm {
@@ -57,7 +57,10 @@ export const Signup: React.FC = () => {
     passwordConfirm: false,
   };
 
-  const { isFocused, handleFocus, handleBlur } = useInput({ inputs, watch });
+  const { isFocused, handleFocus, handleBlur } = useInputFocus({
+    inputs,
+    watch,
+  });
   const { setIsPasswordMatch, selectErrPasswordMessage } = usePasswordMatch();
 
   const onSubmit = (formData: ISignupForm) => {

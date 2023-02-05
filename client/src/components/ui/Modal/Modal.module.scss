@@ -8,19 +8,24 @@
     h2 {
       @include roboto-28-bold;
     }
-    
+
     &_align {
-      &__start {
+      &_start {
+        text-align: start;
       }
-      &__center {
+      &_center {
+        text-align: center;
       }
-      &__end {
+      &_end {
+        text-align: end;
       }
     }
   }
 
   &__content {
     margin-top: 24px;
+    display: flex;
+    flex-direction: column;
   }
 
   &__footer {
@@ -33,15 +38,18 @@
 
     &_size {
       &_small {
+        width: 40vw;
+        height: 40vh;
       }
 
       &_medium {
-        min-width: 760px;
-        max-width: 760px;
-        width: 100px;
+        width: 60vw;
+        height: 60vh;
       }
 
       &_large {
+        width: 80vw;
+        height: 80vh;
       }
     }
 

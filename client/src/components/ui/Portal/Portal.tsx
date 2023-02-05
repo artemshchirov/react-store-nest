@@ -2,19 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom";
 import cn from "classnames";
 
-const root = document.getElementById("root");
-
 export interface IPortalProps {
-  className: string;
+  className?: string;
   children: React.ReactNode;
-  element?: keyof JSX.IntrinsicElements; // all HTML tags
+  element?: keyof JSX.IntrinsicElements; // all HTML tags,
+  elementFindById: string;
 }
 
 export const Portal: React.FC<IPortalProps> = ({
   className,
   children,
   element: Element = "div",
+  elementFindById,
 }) => {
+  const root = document.getElementById(elementFindById);
+
   return root
     ? ReactDOM.createPortal(
         <Element className={cn("portal", className)}>{children}</Element>,

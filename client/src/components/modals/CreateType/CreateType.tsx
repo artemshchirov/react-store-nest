@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal } from "../../ui";
 import { FormField } from "../../ui/FormField/FormField";
-import { useInput } from "../../../hooks/useInput";
+import { useInputFocus } from "../../../hooks/useInputFocus";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -38,7 +38,7 @@ export const CreateType: React.FC<ICreateTypeProps> = ({
     type: false,
   };
 
-  const { isFocused, handleFocus, handleBlur } = useInput({ inputs, watch });
+  const { isFocused, handleFocus, handleBlur } = useInputFocus({ inputs, watch });
 
   return (
     <Modal isOpen={isOpenModal} onCloseModal={onCloseModal}>

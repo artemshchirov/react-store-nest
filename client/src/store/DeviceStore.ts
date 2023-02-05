@@ -23,6 +23,8 @@ export default class DeviceStore {
       { id: 1, name: "Computers" },
       { id: 2, name: "Notebooks" },
       { id: 3, name: "Refrigerators" },
+      { id: 4, name: "Laptops" },
+      { id: 5, name: "Tablets" },
     ];
     this._brands = [
       { id: 0, name: "Samsung" },

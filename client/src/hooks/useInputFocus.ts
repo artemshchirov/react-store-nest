@@ -6,7 +6,7 @@ export interface IUseInput<T extends FieldValues> {
   watch: UseFormWatch<T>
 }
 
-export const useInput = <T extends FieldValues>({ inputs, watch }: IUseInput<T>) => {
+export const useInputFocus = <T extends FieldValues>({ inputs, watch }: IUseInput<T>) => {
   const [isFocused, setIsFocused] = useState({ ...inputs })
 
   const watchAllFields = watch();

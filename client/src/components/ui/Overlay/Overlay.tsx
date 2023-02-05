@@ -21,10 +21,10 @@ export const OverlayComponent: React.FC<IOverlayProps> = ({
     <CSSTransition
       className={classNames(styles.overlay, className)}
       classNames={{
-        enter: styles.overlay__enter,
-        enterActive: styles.overlay__enter_active,
-        exit: styles.overlay__exit,
-        exitActive: styles.overlay__exit_active,
+        enter: styles.overlay_enter,
+        enterActive: styles.overlay_enter_active,
+        exit: styles.overlay_exit,
+        exitActive: styles.overlay_exit_active,
       }}
       in={isActive}
       nodeRef={nodeRef}

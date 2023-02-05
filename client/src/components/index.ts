@@ -10,6 +10,7 @@ import TypeBar from "./TypeBar";
 import {
   NavBar,
   Button,
+  DropDown,
   Input,
   FormField,
   Overlay,
@@ -28,6 +29,7 @@ export {
   TypeBar,
   NavBar,
   Button,
+  DropDown,
   Input,
   FormField,
   Overlay,

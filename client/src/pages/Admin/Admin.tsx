@@ -17,11 +17,10 @@ import {
 } from "../../components/modals/CreateDevice/CreateDevice";
 
 export const Admin: React.FC = () => {
-  const [isOpenModal, setIsOpenModal] = useState(false);
   const [isCreateBrandModal, setIsCreateBrandModal] = useState(false);
   const [isCreateDeviceModal, setIsCreateDeviceModal] = useState(false);
-
   const [isCreateTypeModal, setIsCreateTypeModal] = useState(false);
+  
   const handleCreateTypeModalOpen = () => {
     setIsCreateTypeModal(true);
   };

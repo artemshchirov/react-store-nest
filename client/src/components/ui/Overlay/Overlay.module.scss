@@ -15,27 +15,27 @@ $transition: 0.3s;
   z-index: 100;
   visibility: visible;
 
-  &__enter {
+  &_enter {
     background: transparent;
     opacity: 1;
     visibility: hidden;
   }
 
-  &__enter_active {
+  &_enter_active {
     background-color: #000;
     opacity: $opacity;
     visibility: visible;
     transition: all $transition;
   }
 
-  &__exit {
+  &_exit {
     background-color: #000;
     opacity: $opacity;
     visibility: visible;
     transition: all $transition;
   }
 
-  &__exit_active {
+  &_exit_active {
     background: transparent;
     opacity: 1;
     visibility: hidden;
