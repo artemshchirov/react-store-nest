@@ -22,13 +22,13 @@ export class AuthService {
   ) { }
 
 
-  async login(userDto: CreateUserDto) {
+  async signin(userDto: CreateUserDto) {
     const user = await this.validateUser(userDto);
     return this.generateToken(user);
   }
 
 
-  async registration(userDto: CreateUserDto) {
+  async signup(userDto: CreateUserDto) {
     const candidate = await this.userService.getUserByEmail(userDto.email);
     if (candidate) {
       throw new HttpException(
@@ -43,8 +43,6 @@ export class AuthService {
       password: hashPassword,
     });
     const basket = await this.basketService.createBasket({ userId: user.id })
-    console.log('user created ==>', user)
-    console.log('basket created ==>', basket)
     return this.generateToken(user);
   }
 

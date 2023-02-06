@@ -9,12 +9,17 @@ import { Rating } from '../rating/rating.model';
 import { BasketDevice } from '../basket-device/basket-device.model';
 import { DeviceInfo } from '../device-info/device-info.model';
 import { FilesModule } from '../files/files.module';
+import { DeviceInfoModule } from '../device-info/device-info.module';
 
 
 
 @Module({
   providers: [DeviceService],
   controllers: [DeviceController],
-  imports: [SequelizeModule.forFeature([Device, Type, Brand, Rating, BasketDevice, DeviceInfo]), FilesModule]
+  imports: [
+    SequelizeModule.forFeature([Device, Type, Brand, Rating, BasketDevice, DeviceInfo]),
+    DeviceInfoModule,
+    FilesModule
+  ]
 })
 export class DeviceModule { }

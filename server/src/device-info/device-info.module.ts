@@ -7,7 +7,8 @@ import { DeviceInfoService } from './device-info.service';
 
 
 @Module({
+  providers: [DeviceInfoService],
   imports: [SequelizeModule.forFeature([DeviceInfo, Device])],
-  providers: [DeviceInfoService]
+  exports: [DeviceInfoService],
 })
-export class DeviceInfoModule {}
+export class DeviceInfoModule { }

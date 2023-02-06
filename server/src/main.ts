@@ -17,7 +17,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // TODO config secure cors and import whitelist domains from env!!!
-  const allowedDomains = ['http://localhost:3000', 'http://localhost:4000', 'http://localhost:6000']
+  const allowedDomains = ['http://localhost:5173']
   app.enableCors({
     // allowedHeaders: ['Content-Type, Authorization'],
     // methods: ['POST', 'PUT', 'DELETE', 'GET'],
@@ -60,7 +60,7 @@ async function bootstrap() {
   SwaggerModule.setup('/api/docs', app, document);
 
   // TODO
-  app.useGlobalPipes(new ValidationPipe());
+  // app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new AppExceptionFilter());
 
   await app.listen(PORT, () =>

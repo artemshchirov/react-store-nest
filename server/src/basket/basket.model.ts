@@ -35,7 +35,7 @@ export class Basket extends Model<Basket, BasketCreationAttrs> {
   userId: number;
 
   @BelongsTo(() => User)
-  customer: User;
+  user: User;
 
 
   @HasMany(() => BasketDevice)
