@@ -15,9 +15,11 @@
   "dependencies": {
     "@hookform/resolvers": "^2.9.10",
     "@types/axios": "^0.14.0",
+    "@types/jwt-decode": "^3.1.0",
     "@types/react-transition-group": "^4.4.5",
     "@types/uuid": "^9.0.0",
     "axios": "^1.2.3",
+    "jwt-decode": "^3.1.2",
     "mobx": "^6.7.0",
     "mobx-react": "^7.6.0",
     "normalize.css": "^8.0.1",

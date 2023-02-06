@@ -10,7 +10,7 @@ import {
   SIGNUP_ROUTE,
 } from "../../../utils/constants";
 
-export const NavBar = observer(() => {
+export const NavBar: React.FC = observer(() => {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   return (

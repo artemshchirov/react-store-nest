@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { Button, FormField } from "../../components";
-import styles from "../Signup/Signup.module.scss"; // TODO? import styles for signin not from signup
-// import { useDispatch } from "react-redux";
-// import { getToken } from "services/account";
 import { CustomLink } from "../../components/CustomLink/CustomLink";
+import { useInputFocus } from "../../hooks/useInputFocus";
+import { usePasswordMatch } from "../../hooks/usePasswordMatch";
+import { signin } from "../../http/userApi";
+import styles from "../Signup/Signup.module.scss"; // TODO? import styles for signin not from signup
+import { UserContext } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
+import { SHOP_ROUTE } from "../../utils/constants";
+import { observer } from "mobx-react";
 
 export interface ISigninForm {
   email: string;
@@ -24,11 +29,9 @@ const schema = yup.object().shape({
     .required("Password is required"),
 });
 
-export const Signin: React.FC = () => {
-  const [isFocused, setIsFocused] = useState({
-    email: false,
-    password: false,
-  });
+export const Signin: React.FC = observer(() => {
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -37,33 +40,33 @@ export const Signin: React.FC = () => {
     formState: { errors },
   } = useForm<ISigninForm>({ resolver: yupResolver(schema) });
 
-  const watchAllFields = watch();
-
-  const onSubmit = (formData: ISigninForm) => {
-    console.log("formData:", formData);
-  };
-
-  const handleFocus = (evt: React.FocusEvent<HTMLInputElement>) => {
-    setIsFocused({ ...isFocused, [evt.target.name]: true });
-    // fix chrome initial autofill bug
-    evt.target.removeAttribute("readOnly");
-  };
-
-  const handleBlur = (evt: React.FocusEvent<HTMLInputElement>) => {
-    if (watchAllFields[evt.target.name as keyof ISigninForm] !== "") {
-      setIsFocused({ ...isFocused, [evt.target.name]: true });
-    } else {
-      setIsFocused({ ...isFocused, [evt.target.name]: false });
-    }
-    // fix chrome initial autofill bug
-    evt.currentTarget.setAttribute("readOnly", evt.currentTarget.value);
-  };
-
-  const selectErrPasswordMessage = (message: string | undefined) => {
-    if (message) {
-      return message;
+  const onSubmit = async (formData: ISigninForm) => {
+    console.log("formData ==>", formData);
+    try {
+      let response;
+      response = await signin(formData.email, formData.password);
+      console.log("signin  onSubmit response ==>", response);
+      user.setUser(user);
+      user.setIsAuth(true);
+      navigate(SHOP_ROUTE);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error("Signin error ==>", err.message);
+        alert(err.message);
+      }
     }
   };
+
+  const [inputs, setInputs] = useState({
+    email: false,
+    password: false,
+  });
+
+  const { isFocused, handleFocus, handleBlur } = useInputFocus({
+    inputs,
+    watch,
+  });
+  const { selectErrPasswordMessage } = usePasswordMatch();
 
   return (
     <section className={styles.signup} data-testid="Signin">
@@ -106,4 +109,4 @@ export const Signin: React.FC = () => {
       </div>
     </section>
   );
-};
+});

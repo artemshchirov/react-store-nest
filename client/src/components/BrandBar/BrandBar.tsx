@@ -2,20 +2,21 @@ import React, { useContext } from "react";
 import styles from "./BrandBar.module.scss";
 import { DeviceContext } from "../../context/DeviceContext";
 import { IDevice } from "../../store/DeviceStore";
+import { observer } from "mobx-react";
 
-export interface IBrandListProps {
+interface IBrandListProps {
   brands: IDevice[];
 }
 
-export interface IBrandItemProps {
+interface IBrandItemProps {
   children: React.ReactNode;
 }
 
-export const BrandItem = ({ children }: IBrandItemProps) => {
+const BrandItem: React.FC<IBrandItemProps> = ({ children }) => {
   return <div className={styles.brand__item}>{children}</div>;
 };
 
-export const BrandList = ({ brands }: IBrandListProps) => {
+const BrandList: React.FC<IBrandListProps> = ({ brands }) => {
   return (
     <div className={styles.brand__list}>
       {brands.map(brand => (
@@ -25,11 +26,11 @@ export const BrandList = ({ brands }: IBrandListProps) => {
   );
 };
 
-export const BrandBar = () => {
+export const BrandBar: React.FC = observer(() => {
   const { device } = useContext(DeviceContext);
   return (
     <div className={styles.brand}>
       <BrandList brands={device.brands} />
     </div>
   );
-};
+});

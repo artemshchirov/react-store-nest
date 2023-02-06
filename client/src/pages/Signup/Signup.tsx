@@ -1,33 +1,37 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Button, CustomLink, FormField } from "../../components";
-import { fetchUserSignup } from "../../api/account";
 import { normalizePhoneNumber } from "../../utils/normalizePhoneNumber";
 import { useInputFocus } from "../../hooks/useInputFocus";
 import { usePasswordMatch } from "../../hooks/usePasswordMatch";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styles from "./Signup.module.scss";
+import { signup } from "../../http/userApi";
+import { observer } from "mobx-react-lite";
+import { UserContext } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
+import { SHOP_ROUTE } from "../../utils/constants";
 
 export interface ISignupForm {
-  firstName: string;
-  lastName: string;
-  phoneNumber: string;
+  // firstName: string;
+  // lastName: string;
+  // phoneNumber: string;
   email: string;
   password: string;
   passwordConfirm: string;
 }
 
 const schema = yup.object().shape({
-  firstName: yup
-    .string()
-    .matches(/^([^0-9]*)$/, "The first name must not contain numbers")
-    .required("First name is required"),
-  lastName: yup
-    .string()
-    .matches(/^([^0-9]*)$/, "The last name must not contain numbers")
-    .required("Last name is required"),
-  phoneNumber: yup.string().required("Phone number is required"),
+  // firstName: yup
+  //   .string()
+  //   .matches(/^([^0-9]*)$/, "The first name must not contain numbers")
+  //   .required("First name is required"),
+  // lastName: yup
+  //   .string()
+  //   .matches(/^([^0-9]*)$/, "The last name must not contain numbers")
+  //   .required("Last name is required"),
+  // phoneNumber: yup.string().required("Phone number is required"),
   email: yup
     .string()
     .email("Invalid email. Check if your email is entered correctly")
@@ -38,7 +42,9 @@ const schema = yup.object().shape({
     .required("Password is required"),
 });
 
-export const Signup: React.FC = () => {
+export const Signup: React.FC = observer(() => {
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
   const {
     register,
     watch,
@@ -48,14 +54,14 @@ export const Signup: React.FC = () => {
     resolver: yupResolver(schema),
   });
 
-  const inputs = {
-    firstName: false,
-    lastName: false,
-    phoneNumber: false,
+  const [inputs, setInputs] = useState({
+    // firstName: false,
+    // lastName: false,
+    // phoneNumber: false,
     email: false,
     password: false,
     passwordConfirm: false,
-  };
+  });
 
   const { isFocused, handleFocus, handleBlur } = useInputFocus({
     inputs,
@@ -63,15 +69,25 @@ export const Signup: React.FC = () => {
   });
   const { setIsPasswordMatch, selectErrPasswordMessage } = usePasswordMatch();
 
-  const onSubmit = (formData: ISignupForm) => {
-    console.log("formData:", formData);
-    const phoneNumberNormalize = normalizePhoneNumber(formData.phoneNumber);
-    if (formData.password === formData.passwordConfirm) {
-      setIsPasswordMatch(true);
-      const options = { ...formData, phoneNumber: phoneNumberNormalize };
-      fetchUserSignup(options);
-    } else {
-      setIsPasswordMatch(false);
+  const onSubmit = async (formData: ISignupForm) => {
+    console.log("formData ==>", formData);
+    try {
+      let response;
+      if (formData.password === formData.passwordConfirm) {
+        setIsPasswordMatch(true);
+        response = await signup(formData.email, formData.password);
+        console.log("signup  onSubmit response ==>", response);
+        user.setUser(user);
+        user.setIsAuth(true);
+        navigate(SHOP_ROUTE);
+      } else {
+        setIsPasswordMatch(false);
+      }
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error("Signup error ==>", err.message);
+        alert(err.message);
+      }
     }
   };
 
@@ -85,7 +101,7 @@ export const Signup: React.FC = () => {
           noValidate
         >
           <div className={styles.form__fields}>
-            <FormField
+            {/* <FormField
               label="First name"
               name="firstName"
               type="text"
@@ -117,7 +133,7 @@ export const Signup: React.FC = () => {
               isRequired
               onFocus={handleFocus}
               onBlur={handleBlur}
-            />
+            /> */}
             <FormField
               label="Email"
               name="email"
@@ -160,4 +176,4 @@ export const Signup: React.FC = () => {
       </div>
     </section>
   );
-};
+});

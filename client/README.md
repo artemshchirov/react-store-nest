@@ -9,12 +9,11 @@ Online store frontend written with React.js and TypeScript
 
 ## TODO
 
-- [ ] Registration page
-- [ ] Login page
+- [ ] Signin, Signup pages
 - [ ] Admin page dashboard
 - [ ] Check auth forms autofill in other browsers
 
-## Running the app
+### Running the app
 
 ```bash
 # Installation
@@ -30,7 +29,7 @@ $ yarn start:dev
 $ yarn start:prod
 ```
 
-## Test
+### Test
 
 ```bash
 # unit tests
@@ -42,7 +41,3 @@ $ yarn test:e2e
 # test coverage
 $ yarn test:cov
 ```
-
-## Stay in touch
-
-- Author - [Artem Shchirov](https://artemshchirov.github.io/portfolio/)

@@ -1,9 +1,7 @@
 import React from "react";
 import styles from "./Logo.module.scss";
 
-export interface LogoProps {}
-
-export const Logo = ({}: LogoProps) => {
+export const Logo: React.FC = () => {
   return (
     <div className={styles.logo} data-testid="Logo">
       Logo

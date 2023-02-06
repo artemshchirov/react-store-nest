@@ -1,1 +1,16 @@
-.vscode/
+/.vscode
+
+/client/dist
+/server/dist
+
+/client/node_modules
+/server/node_modules
+
+/client/.env.development
+/client/.env.production
+
+/server/.env.development
+/server/.env.production
+
+/client/yarn-error.log
+/server/yarn-error.log

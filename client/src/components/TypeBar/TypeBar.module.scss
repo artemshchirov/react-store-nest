@@ -1,5 +1,18 @@
-.typeBar {
+.type {
   // display: grid;
   background-color: cyan;
   grid-area: type;
+
+  &__list {
+    background-color: aquamarine;
+  }
+
+  &__item {
+    padding: 5px;
+    width: max-content;
+    border: 1px solid black;
+    color: white;
+    background-color: purple;
+    cursor: pointer;
+  }
 }

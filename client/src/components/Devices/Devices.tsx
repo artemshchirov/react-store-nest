@@ -5,16 +5,13 @@ import { IDevices } from "../../store/DeviceStore";
 import styles from "./Devices.module.scss";
 import { Icon } from "../ui";
 import { DEVICE_ROUTE } from "../../utils/constants";
+import { observer } from "mobx-react";
 
-export interface IDeviceItemProps {
+interface IDeviceItemProps {
   device: IDevices;
 }
 
-export interface IDeviceListProps {
-  devices: IDevices[];
-}
-
-export const DevicesItem = ({ device }: IDeviceItemProps) => {
+const DevicesItem: React.FC<IDeviceItemProps> = ({ device }) => {
   const navigate = useNavigate();
   return (
     <div
@@ -34,7 +31,11 @@ export const DevicesItem = ({ device }: IDeviceItemProps) => {
   );
 };
 
-export const DevicesList = ({ devices }: IDeviceListProps) => {
+interface IDeviceListProps {
+  devices: IDevices[];
+}
+
+const DevicesList: React.FC<IDeviceListProps> = ({ devices }) => {
   return (
     <div className={styles.devices__list}>
       {devices.map(device => (
@@ -44,11 +45,11 @@ export const DevicesList = ({ devices }: IDeviceListProps) => {
   );
 };
 
-export const Devices = () => {
+export const Devices: React.FC = observer(() => {
   const { device } = useContext(DeviceContext);
   return (
     <div className={styles.devices}>
       <DevicesList devices={device.devices} />
     </div>
   );
-};
+});

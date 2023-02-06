@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal } from "../../ui";
-import { FormField } from "../../ui/FormField/FormField";
+import { FormField } from "../../ui";
 import { useInputFocus } from "../../../hooks/useInputFocus";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -38,7 +38,10 @@ export const CreateBrand: React.FC<ICreateBrandProps> = ({
     brand: false,
   };
 
-  const { isFocused, handleFocus, handleBlur } = useInputFocus({ inputs, watch });
+  const { isFocused, handleFocus, handleBlur } = useInputFocus({
+    inputs,
+    watch,
+  });
 
   return (
     <Modal isOpen={isOpenModal} onCloseModal={onCloseModal}>

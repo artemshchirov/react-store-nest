@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { default as ReactModal } from "react-responsive-modal";
 import classNames from "classnames";
-import { Button, Icon } from "../../../components/ui";
+import { Button, Icon } from "../../../components";
 import "react-responsive-modal/styles.css";
 import styles from "./Modal.module.scss";
 

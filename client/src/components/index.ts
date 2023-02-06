@@ -8,10 +8,17 @@ import Logo from "./Logo";
 import Header from "./Header";
 import TypeBar from "./TypeBar";
 import {
+  CreateBrand,
+  CreateDevice,
+  CreateType
+} from './modals'
+import {
   NavBar,
   Button,
   DropDown,
+  Icon,
   Input,
+  FileUpload,
   FormField,
   Overlay,
   Portal
@@ -27,10 +34,15 @@ export {
   Logo,
   Header,
   TypeBar,
+  CreateBrand,
+  CreateDevice,
+  CreateType,
   NavBar,
   Button,
   DropDown,
+  Icon,
   Input,
+  FileUpload,
   FormField,
   Overlay,
   Portal,

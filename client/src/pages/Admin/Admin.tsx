@@ -1,26 +1,22 @@
 import React, { useState } from "react";
-import { Button } from "../../components/ui";
-
-// FIXME refactor to index.ts
 import {
+  Button,
   CreateType,
-  ICreateTypeForm,
-} from "../../components/modals/CreateType/CreateType";
-import styles from "./Admin.module.scss";
-import {
-  CreateBrand,
-  ICreateBrandForm,
-} from "../../components/modals/CreateBrand/CreateBrand";
-import {
   CreateDevice,
+  CreateBrand,
+} from "../../components";
+import {
+  ICreateBrandForm,
   ICreateDeviceForm,
-} from "../../components/modals/CreateDevice/CreateDevice";
+  ICreateTypeForm,
+} from "../../components/modals";
+import styles from "./Admin.module.scss";
 
 export const Admin: React.FC = () => {
   const [isCreateBrandModal, setIsCreateBrandModal] = useState(false);
   const [isCreateDeviceModal, setIsCreateDeviceModal] = useState(false);
   const [isCreateTypeModal, setIsCreateTypeModal] = useState(false);
-  
+
   const handleCreateTypeModalOpen = () => {
     setIsCreateTypeModal(true);
   };
